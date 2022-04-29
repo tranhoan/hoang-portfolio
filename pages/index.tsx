@@ -22,7 +22,15 @@ const Home: NextPage = () => {
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
-              <IntroSection className='section' />
+              <IntroSection className='section'>
+                <IntroductionWrapper>
+                  <GreetingParagraph>hi there,</GreetingParagraph>
+                  <IntroParagraph>
+                    my name is Hoang, I am an aspiring frontend developer and UX
+                    designer based in Prague.
+                  </IntroParagraph>
+                </IntroductionWrapper>
+              </IntroSection>
               <AboutSection className='section' />
             </ReactFullpage.Wrapper>
           );
@@ -44,5 +52,25 @@ const IntroSection = styled.section`
 
 const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBeige);
+`;
+
+const IntroductionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: var(--secondaryGrey);
+  margin-left: 24rem;
+  margin-top: 16rem;
+`;
+const GreetingParagraph = styled.p`
+  font-size: 4.5rem;
+  font-weight: medium;
+  margin-bottom: 5.6rem;
+`;
+
+const IntroParagraph = styled.p`
+  font-size: 6.5rem;
+  line-height: 9rem;
+  max-width: 98rem;
+  margin: 0;
 `;
 export default Home;

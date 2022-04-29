@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
     --primaryBeige: #D6D4D1;
     --secondaryGrey: #DDDCDB;
     scroll-behavior: smooth;
+    font-family: 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.05rem;
     body, html{ 
         height: 100%;
         padding: 0;
