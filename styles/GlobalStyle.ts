@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: white;
     --primaryBlue: #1A293E;
     --primaryBeige: #D6D4D1;
+    --secondaryGrey: #DDDCDB;
     scroll-behavior: smooth;
     body, html{ 
         height: 100%;
@@ -28,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     };
     #__next{
         height: 100%;
+        position: relative;
     };
     body:after, body:before {
         content: "";
