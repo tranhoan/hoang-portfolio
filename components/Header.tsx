@@ -6,19 +6,29 @@ import { FiInstagram, FiLinkedin, FiFacebook } from 'react-icons/fi';
 const Header: React.FC = () => {
   return (
     <S.Header>
-      <S.LogoContainer>
-        <SignatureLogo />
-        <NamePartLogo />
-      </S.LogoContainer>
+      <S.Navigation>
+        <S.LogoContainer>
+          <SignatureLogo />
+          <NamePartLogo />
+        </S.LogoContainer>
+        <VerticalLine />
+        <S.MenuButton>menu</S.MenuButton>
+      </S.Navigation>
       <S.SocialMediaWrapper>
         <HorizontalLine />
-        <S.IconLink href='https://www.instagram.com/alwayshoangry/'>
+        <S.IconLink
+          href='https://www.instagram.com/alwayshoangry/'
+          target='_blank'
+        >
           <FiInstagram size={20} />
         </S.IconLink>
-        <S.IconLink href='https://www.facebook.com/hoang.t.quoc'>
+        <S.IconLink
+          href='https://www.facebook.com/hoang.t.quoc'
+          target='_blank'
+        >
           <FiFacebook size={20} />
         </S.IconLink>
-        <S.IconLink href='https://www.linkedin.com/in/hoangtq'>
+        <S.IconLink href='https://www.linkedin.com/in/hoangtq' target='_blank'>
           <FiLinkedin size={20} />
         </S.IconLink>
       </S.SocialMediaWrapper>
@@ -53,12 +63,30 @@ const S = {
   `,
   LogoContainer: styled.div`
     display: flex;
+    margin-right: 4rem;
+  `,
+  Navigation: styled.div`
+    display: flex;
+    align-items: center;
+  `,
+
+  MenuButton: styled.div`
+    font-size: 1.8rem;
+    margin: 0 4rem;
+    color: var(--secondaryGrey);
+    font-weight: 600;
   `,
 };
 
 const HorizontalLine = styled.div`
   width: 5.2rem;
   height: 0.1rem;
+  background-color: var(--secondaryGrey);
+`;
+
+const VerticalLine = styled.div`
+  height: 2.4rem;
+  width: 0.1rem;
   background-color: var(--secondaryGrey);
 `;
 export default Header;

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Header from '../components/Header';
+import Background from '../components/Background';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      <Background />
       <ReactFullpage
         licenseKey={'YOUR_KEY_HERE'}
         scrollingSpeed={900}

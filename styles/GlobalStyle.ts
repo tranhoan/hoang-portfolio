@@ -12,6 +12,22 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     font-family: 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: 0.05rem;
+    @keyframes curve1 {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+        100% {
+            transform: translateY(20%) rotate(20deg);
+        }
+    };
+    @keyframes curve2 {
+        0% {
+            transform: translateY(0) rotate(15deg);
+        }
+        100% {
+            transform: translateY(-20%) rotate(25deg);
+        }
+    };
     body, html{ 
         height: 100%;
         margin: 0;
