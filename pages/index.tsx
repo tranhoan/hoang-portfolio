@@ -1,11 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useCallback } from 'react';
+import styled, { css } from 'styled-components';
 import ReactFullpage from '@fullpage/react-fullpage';
 import Header from '../components/Header';
 
 const Home: NextPage = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
     <React.Fragment>
       <Head>
@@ -17,6 +22,7 @@ const Home: NextPage = () => {
       <ReactFullpage
         licenseKey={'YOUR_KEY_HERE'}
         scrollingSpeed={900}
+        verticalCentered={false}
         css3={true}
         easingcss3={'cubic-bezier(.82,.28,.34,.62)'}
         render={({ state, fullpageApi }) => {
@@ -24,8 +30,10 @@ const Home: NextPage = () => {
             <ReactFullpage.Wrapper>
               <IntroSection className='section'>
                 <IntroductionWrapper>
-                  <GreetingParagraph>hi there,</GreetingParagraph>
-                  <IntroParagraph>
+                  <GreetingParagraph fadeInDone={isLoaded}>
+                    hi there,
+                  </GreetingParagraph>
+                  <IntroParagraph fadeInDone={isLoaded}>
                     my name is Hoang, I am an aspiring frontend developer and UX
                     designer based in Prague.
                   </IntroParagraph>
@@ -54,23 +62,33 @@ const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBeige);
 `;
 
+const fadeInCss = css<{ fadeInDone: boolean }>`
+  transition: opacity 500ms var(--easing), transform 600ms var(--easing);
+  transform: ${(props) =>
+    props.fadeInDone ? 'translateY(0px)' : 'translateY(-4rem)'};
+  opacity: ${(props) => (props.fadeInDone ? '1' : '0')};
+`;
+
 const IntroductionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: var(--secondaryGrey);
   margin-left: 24rem;
-  margin-top: 16rem;
+  padding-top: 16rem;
 `;
-const GreetingParagraph = styled.p`
+const GreetingParagraph = styled.p<{ fadeInDone: boolean }>`
   font-size: 4.5rem;
-  font-weight: medium;
+  font-weight: 600;
   margin-bottom: 5.6rem;
+  ${fadeInCss}
 `;
 
-const IntroParagraph = styled.p`
+const IntroParagraph = styled.p<{ fadeInDone: boolean }>`
   font-size: 6.5rem;
   line-height: 9rem;
   max-width: 98rem;
   margin: 0;
+  ${fadeInCss}
+  transition-delay: 700ms;
 `;
 export default Home;

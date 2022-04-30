@@ -8,12 +8,12 @@ const GlobalStyle = createGlobalStyle`
     --primaryBlue: #1A293E;
     --primaryBeige: #D6D4D1;
     --secondaryGrey: #DDDCDB;
+    --easing: cubic-bezier(.215,.61,.355,1);
     scroll-behavior: smooth;
     font-family: 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: 0.05rem;
     body, html{ 
         height: 100%;
-        padding: 0;
         margin: 0;
         box-sizing: border-box;
         scrollbar-width: none;
@@ -26,9 +26,9 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     };
-    body {
+    /* body {
         padding: 2.4rem;
-    };
+    }; */
     #__next{
         height: 100%;
         position: relative;
@@ -69,5 +69,6 @@ const GlobalStyle = createGlobalStyle`
     &:after {
         right: 0;
     }
-}`;
+}
+`;
 export default GlobalStyle;
