@@ -13,11 +13,10 @@ const Background: React.FC = () => {
 };
 
 const shapeCss = css`
-    position: absolute;
-    pointer-events: none;
-    opacity: 0.2;
-    transition: opacity 0.2s linear;
-}
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: opacity 0.2s linear;
 `;
 const S = {
   ShapeContainer: styled.div`
