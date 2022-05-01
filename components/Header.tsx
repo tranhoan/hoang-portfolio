@@ -52,7 +52,7 @@ const S = {
     justify-content: space-between;
     align-items: center;
     margin: 6.4rem 8rem 0 8rem;
-    --headerColor: ${(props) =>
+    --textColor: ${(props) =>
       props.sectionColor === 'beige'
         ? 'var(--primaryBlue)'
         : 'var(--secondaryGrey)'};
@@ -62,7 +62,7 @@ const S = {
     align-items: center;
   `,
   IconLink: styled.a`
-    color: var(--headerColor);
+    color: var(--textColor);
     margin-left: 4rem;
     transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
       color 2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -77,7 +77,7 @@ const S = {
     margin-right: 4rem;
     & path {
       transition: fill 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-      fill: var(--headerColor);
+      fill: var(--textColor);
     }
   `,
   Navigation: styled.div`
@@ -88,7 +88,7 @@ const S = {
   MenuButton: styled.div`
     font-size: 1.8rem;
     margin: 0 4rem;
-    color: var(--headerColor);
+    color: var(--textColor);
     font-weight: 600;
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   `,
@@ -97,14 +97,14 @@ const S = {
 const HorizontalLine = styled.div`
   width: 5.2rem;
   height: 0.1rem;
-  background-color: var(--headerColor);
+  background-color: var(--textColor);
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
 const VerticalLine = styled.div`
   height: 2.4rem;
   width: 0.1rem;
-  background-color: var(--headerColor);
+  background-color: var(--textColor);
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 export default Header;
