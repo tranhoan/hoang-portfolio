@@ -29,6 +29,17 @@ const GlobalStyle = createGlobalStyle`
             transform: translateY(-20%) rotate(25deg);
         }
     };
+    @keyframes scrollLineIn {
+        0% {
+            transform: scaleY(0)
+        }
+    };
+    @keyframes reveal {
+        0% {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+    }
     body, html{ 
         height: 100%;
         margin: 0;
@@ -43,9 +54,6 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
     };
-    /* body {
-        padding: 2.4rem;
-    }; */
     #__next{
         height: 100%;
         position: relative;
@@ -86,6 +94,7 @@ const GlobalStyle = createGlobalStyle`
     &:after {
         right: 0;
     }
+    
 }
 `;
 export default GlobalStyle;

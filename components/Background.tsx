@@ -1,11 +1,16 @@
+import { useAtom } from 'jotai';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { sections } from '../data/sectionData';
 import FirstLine from '../public/line.svg';
 import SecondLine from '../public/line2.svg';
+import { activeSectionAtom } from '../store';
+import { colorTransitionCss } from './Header';
 
 const Background: React.FC = () => {
+  const [nextActiveSection] = useAtom(activeSectionAtom);
   return (
-    <S.ShapeContainer>
+    <S.ShapeContainer sectionColor={sections[nextActiveSection].sectionColor}>
       <S.FirstCurve />
       <S.SecondCurve />
     </S.ShapeContainer>
@@ -17,9 +22,13 @@ const shapeCss = css`
   pointer-events: none;
   opacity: 0.2;
   transition: opacity 0.2s linear;
+  & path {
+    stroke: var(--textColor);
+    transition: stroke 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
 `;
 const S = {
-  ShapeContainer: styled.div`
+  ShapeContainer: styled.div<{ sectionColor: 'beige' | 'blue' }>`
     position: fixed;
     top: 0;
     right: 0;
@@ -27,6 +36,7 @@ const S = {
     left: 0;
     overflow: hidden;
     z-index: 8000;
+    ${colorTransitionCss}
   `,
   FirstCurve: styled(FirstLine)`
     position: absolute;

@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Background from '../components/Background';
 import { activeSectionAtom } from '../store';
 import { useAtom } from 'jotai';
+import ScrollLine from '../components/ScrollLine';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +22,6 @@ const Home: NextPage = () => {
     destination: Item,
     direction: string
   ) => {
-    console.log('hoang');
     setIsNextSectionLoaded((prevLoaded) => !prevLoaded);
     setNextActiveSection(destination.index);
   };
@@ -73,6 +73,7 @@ const Home: NextPage = () => {
           );
         }}
       />
+      <ScrollLine />
     </React.Fragment>
   );
 };
@@ -105,7 +106,7 @@ const AboutTextWrapper = styled.div<{ fadeInDone: boolean }>`
   flex-direction: column;
   margin-left: 20.4rem;
   padding-top: 19.6rem;
-  max-width: 1494px;
+  max-width: 1300px;
   ${fadeInCss}
   transition-delay: 700ms;
 `;
@@ -118,7 +119,7 @@ const SectionLabel = styled.span`
 `;
 
 const DescriptionParagraph = styled.p`
-  font-size: 5rem;
+  font-size: 4.5rem;
   color: var(--primaryBlue);
   line-height: 9rem;
   font-weight: medium;
@@ -148,4 +149,5 @@ const IntroParagraph = styled.p<{ fadeInDone: boolean }>`
   ${fadeInCss}
   transition-delay: 700ms;
 `;
+
 export default Home;

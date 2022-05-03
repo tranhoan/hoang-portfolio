@@ -40,6 +40,14 @@ const Header: React.FC = () => {
     </S.Header>
   );
 };
+
+export const colorTransitionCss = css<{ sectionColor: 'beige' | 'blue' }>`
+  --textColor: ${(props) =>
+    props.sectionColor === 'beige'
+      ? 'var(--primaryBlue)'
+      : 'var(--secondaryGrey)'};
+`;
+
 const S = {
   Header: styled.header<{ sectionColor: 'beige' | 'blue' }>`
     box-sizing: border-box;
@@ -52,10 +60,7 @@ const S = {
     justify-content: space-between;
     align-items: center;
     margin: 6.4rem 8rem 0 8rem;
-    --textColor: ${(props) =>
-      props.sectionColor === 'beige'
-        ? 'var(--primaryBlue)'
-        : 'var(--secondaryGrey)'};
+    ${colorTransitionCss}
   `,
   SocialMediaWrapper: styled.div`
     display: flex;
@@ -94,14 +99,14 @@ const S = {
   `,
 };
 
-const HorizontalLine = styled.div`
+export const HorizontalLine = styled.div`
   width: 5.2rem;
   height: 0.1rem;
   background-color: var(--textColor);
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
-const VerticalLine = styled.div`
+export const VerticalLine = styled.div`
   height: 2.4rem;
   width: 0.1rem;
   background-color: var(--textColor);
