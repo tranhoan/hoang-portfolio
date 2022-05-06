@@ -11,7 +11,8 @@ import ScrollLine from '../components/ScrollLine';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isNextSectionLoaded, setIsNextSectionLoaded] = useState(false);
+  const [isSecondSectionLoaded, setIsSecondSectionLoaded] = useState(false);
+  const [isThirdSectionLoaded, setIsThirdSectionLoaded] = useState(false);
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
   useEffect(() => {
     setIsLoaded(true);
@@ -22,8 +23,20 @@ const Home: NextPage = () => {
     destination: Item,
     direction: string
   ) => {
-    setIsNextSectionLoaded((prevLoaded) => !prevLoaded);
     setNextActiveSection(destination.index);
+  };
+
+  const onSectionEnter = (
+    origin: Item,
+    destination: Item,
+    direction: string
+  ) => {
+    if (destination.index === 1) {
+      console.log('hoang');
+      setIsSecondSectionLoaded(true);
+    } else if (destination.index === 2) {
+      setIsThirdSectionLoaded(true);
+    }
   };
   return (
     <React.Fragment>
@@ -41,22 +54,21 @@ const Home: NextPage = () => {
         css3={true}
         easingcss3={'cubic-bezier(.82,.28,.34,.62)'}
         onLeave={onSectionLeave}
+        afterLoad={onSectionEnter}
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
               <IntroSection className={'section'}>
-                <IntroductionWrapper>
-                  <GreetingParagraph fadeInDone={isLoaded}>
-                    hi there,
-                  </GreetingParagraph>
-                  <IntroParagraph fadeInDone={isLoaded}>
+                <IntroductionWrapper fadeInDone={isLoaded}>
+                  <GreetingParagraph>hi there,</GreetingParagraph>
+                  <IntroParagraph>
                     my name is Hoang, I am an aspiring frontend developer and UX
                     designer based in Prague.
                   </IntroParagraph>
                 </IntroductionWrapper>
               </IntroSection>
               <AboutSection className={'section'}>
-                <AboutTextWrapper fadeInDone={isNextSectionLoaded}>
+                <AboutTextWrapper fadeInDone={isSecondSectionLoaded}>
                   <SectionLabel>About me</SectionLabel>
                   <DescriptionParagraph>
                     I'm a CTU graduate specializing in Human computer
@@ -88,6 +100,20 @@ const Main = styled.div`
   height: 100vh;
   width: 100%;
 `;
+
+const GreetingParagraph = styled.p`
+  font-size: 4.5rem;
+  font-weight: 600;
+  margin-bottom: 5.6rem;
+`;
+
+const IntroParagraph = styled.p`
+  font-size: 6.5rem;
+  line-height: 9rem;
+  max-width: 98rem;
+  margin: 0;
+`;
+
 const IntroSection = styled.section`
   height: 100vh;
   background-color: var(--primaryBlue);
@@ -99,16 +125,6 @@ const WorkSection = styled(IntroSection)``;
 
 const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBeige);
-`;
-
-const AboutTextWrapper = styled.div<{ fadeInDone: boolean }>`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20.4rem;
-  padding-top: 19.6rem;
-  max-width: 1300px;
-  ${fadeInCss}
-  transition-delay: 700ms;
 `;
 
 const SectionLabel = styled.span`
@@ -127,27 +143,36 @@ const DescriptionParagraph = styled.p`
   margin: 0;
 `;
 
-const IntroductionWrapper = styled.div`
+const AboutTextWrapper = styled.div<{ fadeInDone: boolean }>`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20.4rem;
+  padding-top: 19.6rem;
+  max-width: 1300px;
+
+  ${SectionLabel} {
+    ${fadeInCss}
+  }
+  ${DescriptionParagraph} {
+    ${fadeInCss}
+    transition-delay: 300ms;
+  }
+`;
+
+const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
   color: var(--secondaryGrey);
   margin-left: 24rem;
   padding-top: 16rem;
-`;
-const GreetingParagraph = styled.p<{ fadeInDone: boolean }>`
-  font-size: 4.5rem;
-  font-weight: 600;
-  margin-bottom: 5.6rem;
-  ${fadeInCss}
-`;
 
-const IntroParagraph = styled.p<{ fadeInDone: boolean }>`
-  font-size: 6.5rem;
-  line-height: 9rem;
-  max-width: 98rem;
-  margin: 0;
-  ${fadeInCss}
-  transition-delay: 700ms;
+  ${GreetingParagraph} {
+    ${fadeInCss}
+  }
+  ${IntroParagraph} {
+    ${fadeInCss}
+    transition-delay: 300ms;
+  }
 `;
 
 export default Home;
