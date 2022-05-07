@@ -68,8 +68,8 @@ const Home: NextPage = () => {
                 </IntroductionWrapper>
               </IntroSection>
               <AboutSection className={'section'}>
-                <AboutTextWrapper fadeInDone={isSecondSectionLoaded}>
-                  <SectionLabel>About me</SectionLabel>
+                <SectionMainWrapper fadeInDone={isSecondSectionLoaded}>
+                  <SecondSectionLabel>About me</SecondSectionLabel>
                   <DescriptionParagraph>
                     I'm a CTU graduate specializing in Human computer
                     interaction and someone who has always been passionate about
@@ -78,9 +78,17 @@ const Home: NextPage = () => {
                     developer I create interactive experience using technologies
                     such as React, Typescript.
                   </DescriptionParagraph>
-                </AboutTextWrapper>
+                </SectionMainWrapper>
               </AboutSection>
-              <WorkSection className={'section'}></WorkSection>
+              <WorkSection className={'section'}>
+                <SectionMainWrapper fadeInDone={isThirdSectionLoaded}>
+                  <ThirdSectionLabel>Selected work</ThirdSectionLabel>
+                  <SelectedWorkWrapper>
+                    visualclass, hub, felsight, visuflights, min todo, hoang
+                    tran
+                  </SelectedWorkWrapper>
+                </SectionMainWrapper>
+              </WorkSection>
             </ReactFullpage.Wrapper>
           );
         }}
@@ -90,7 +98,7 @@ const Home: NextPage = () => {
   );
 };
 const fadeInCss = css<{ fadeInDone: boolean }>`
-  transition: opacity 500ms var(--easing), transform 600ms var(--easing);
+  transition: opacity 500ms var(--easing), transform 800ms var(--easing);
   transform: ${(props) =>
     props.fadeInDone ? 'translateY(0px)' : 'translateY(-4rem)'};
   opacity: ${(props) => (props.fadeInDone ? '1' : '0')};
@@ -121,17 +129,23 @@ const IntroSection = styled.section`
   box-sizing: border-box;
 `;
 
-const WorkSection = styled(IntroSection)``;
+const WorkSection = styled(IntroSection)`
+  color: var(--secondaryGrey);
+`;
 
 const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBeige);
 `;
 
-const SectionLabel = styled.span`
+const SecondSectionLabel = styled.span`
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--primaryBlue);
   margin-bottom: 4rem;
+`;
+
+const ThirdSectionLabel = styled(SecondSectionLabel)`
+  color: var(--secondaryGrey);
 `;
 
 const DescriptionParagraph = styled.p`
@@ -143,19 +157,23 @@ const DescriptionParagraph = styled.p`
   margin: 0;
 `;
 
-const AboutTextWrapper = styled.div<{ fadeInDone: boolean }>`
+const SelectedWorkWrapper = styled(IntroParagraph)`
+  font-weight: medium;
+`;
+
+const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
   margin-left: 20.4rem;
   padding-top: 19.6rem;
   max-width: 1300px;
 
-  ${SectionLabel} {
+  ${SecondSectionLabel} {
     ${fadeInCss}
   }
   ${DescriptionParagraph} {
     ${fadeInCss}
-    transition-delay: 300ms;
+    transition-delay: 400ms;
   }
 `;
 
@@ -171,7 +189,7 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   }
   ${IntroParagraph} {
     ${fadeInCss}
-    transition-delay: 300ms;
+    transition-delay: 400ms;
   }
 `;
 
