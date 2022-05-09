@@ -7,9 +7,25 @@ import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import { sections } from '../data/sectionData';
 
+declare global {
+  interface Window {
+    fullpage_api?: any;
+  }
+}
+
 const Header: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
   const [isMenuOpen, setIsMenuOpen] = useAtom(isMenuOpenAtom);
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+    window.fullpage_api.setAllowScrolling(false);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    window.fullpage_api.setAllowScrolling(true);
+  };
   return (
     <S.Header
       isColorBeige={
@@ -25,16 +41,10 @@ const Header: React.FC = () => {
         </S.LogoContainer>
         <VerticalLine />
         <S.MenuActionContainer>
-          <S.MenuButton
-            onClick={() => setIsMenuOpen(true)}
-            isActive={!isMenuOpen}
-          >
+          <S.MenuButton onClick={() => openMenu()} isActive={!isMenuOpen}>
             menu
           </S.MenuButton>
-          <S.MenuButton
-            onClick={() => setIsMenuOpen(false)}
-            isActive={isMenuOpen}
-          >
+          <S.MenuButton onClick={() => closeMenu()} isActive={isMenuOpen}>
             close
           </S.MenuButton>
         </S.MenuActionContainer>
