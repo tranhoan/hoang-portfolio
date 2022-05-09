@@ -40,14 +40,16 @@ const Header: React.FC = () => {
           <NamePartLogo />
         </S.LogoContainer>
         <VerticalLine />
-        <S.MenuActionContainer>
-          <S.MenuButton onClick={() => openMenu()} isActive={!isMenuOpen}>
-            menu
-          </S.MenuButton>
-          <S.MenuButton onClick={() => closeMenu()} isActive={isMenuOpen}>
-            close
-          </S.MenuButton>
-        </S.MenuActionContainer>
+        <S.MenuActionWrapper>
+          <S.ButtonContainer>
+            <S.MenuButton onClick={() => openMenu()} isActive={!isMenuOpen}>
+              menu
+            </S.MenuButton>
+            <S.MenuButton onClick={() => closeMenu()} isActive={isMenuOpen}>
+              close
+            </S.MenuButton>
+          </S.ButtonContainer>
+        </S.MenuActionWrapper>
       </S.Navigation>
       <S.SocialMediaWrapper>
         <HorizontalLine />
@@ -118,7 +120,7 @@ const S = {
     align-items: center;
   `,
 
-  MenuButton: styled.button<{ isActive: boolean }>`
+  MenuButton: styled.span<{ isActive: boolean }>`
     font-size: 1.8rem;
     color: var(--textColor);
     font-weight: 600;
@@ -134,10 +136,19 @@ const S = {
       position: relative;
     }
   `,
-  MenuActionContainer: styled.div`
+  MenuActionWrapper: styled.button`
     margin: 0 4rem;
     overflow: hidden;
     position: relative;
+    min-width: 5.6rem;
+    transition: letter-spacing 0.12s var(--easing);
+    &:hover {
+      letter-spacing: 2px;
+    }
+  `,
+  ButtonContainer: styled.div`
+    position: relative;
+    display: inline-block;
   `,
 };
 

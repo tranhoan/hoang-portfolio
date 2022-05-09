@@ -99,7 +99,6 @@ const GlobalStyle = createGlobalStyle`
     button {
         font-family: inherit;
         padding: 0;
-        margin: 0;
         background: none;
         border: none;
         cursor: pointer;
