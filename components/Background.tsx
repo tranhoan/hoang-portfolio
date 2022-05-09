@@ -29,6 +29,7 @@ const shapeCss = css`
 `;
 const S = {
   ShapeContainer: styled.div<{ isColorBeige: boolean }>`
+    pointer-events: none;
     position: fixed;
     top: 0;
     right: 0;
