@@ -1,5 +1,4 @@
 import { atom } from 'jotai';
-import { focusAtom } from 'jotai/optics';
 
 type SectionLoadAtomType = {
   isSectionLoaded: boolean;
@@ -7,3 +6,4 @@ type SectionLoadAtomType = {
 };
 
 export const activeSectionAtom = atom(0);
+export const isMenuOpenAtom = atom(false);

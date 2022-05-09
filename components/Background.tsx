@@ -10,7 +10,7 @@ import { colorTransitionCss } from './Header';
 const Background: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
   return (
-    <S.ShapeContainer sectionColor={sections[nextActiveSection].sectionColor}>
+    <S.ShapeContainer isColorBeige={sections[nextActiveSection].isColorBeige}>
       <S.FirstCurve />
       <S.SecondCurve />
     </S.ShapeContainer>
@@ -28,7 +28,7 @@ const shapeCss = css`
   }
 `;
 const S = {
-  ShapeContainer: styled.div<{ sectionColor: 'beige' | 'blue' }>`
+  ShapeContainer: styled.div<{ isColorBeige: boolean }>`
     position: fixed;
     top: 0;
     right: 0;

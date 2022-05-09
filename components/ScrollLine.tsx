@@ -8,7 +8,7 @@ import { colorTransitionCss, VerticalLine } from './Header';
 const ScrollLine: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
   return (
-    <S.Footer sectionColor={sections[nextActiveSection].sectionColor}>
+    <S.Footer isColorBeige={sections[nextActiveSection].isColorBeige}>
       <S.ScrollContainer
         isLast={sections[nextActiveSection].sectionNumber === 2}
       >
@@ -53,9 +53,9 @@ const S = {
   `,
   ScrollLine: styled(VerticalLine)`
     height: 22.4rem;
-    animation: scrollLineIn 800ms var(--easing) 1.5s backwards;
+    animation: scrollLineIn 800ms var(--easing) 1.2s backwards;
   `,
-  Footer: styled.div<{ sectionColor: 'beige' | 'blue' }>`
+  Footer: styled.div<{ isColorBeige: boolean }>`
     display: flex;
     position: fixed;
     bottom: 2.4rem;

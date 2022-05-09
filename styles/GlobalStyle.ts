@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     --secondaryGrey: #DDDCDB;
     --textColor: #DDDCDB;
     --easing: cubic-bezier(.215,.61,.355,1);
+    --zIndexTransition: z-index 0s ease 0s;
     scroll-behavior: smooth;
     font-family: 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: 0.05rem;
@@ -93,6 +94,15 @@ const GlobalStyle = createGlobalStyle`
     };
     &:after {
         right: 0;
+    }
+
+    button {
+        font-family: inherit;
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
     
 }

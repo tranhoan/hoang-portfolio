@@ -5,9 +5,10 @@ import styled, { css } from 'styled-components';
 import ReactFullpage, { Item } from '@fullpage/react-fullpage';
 import Header from '../components/Header';
 import Background from '../components/Background';
-import { activeSectionAtom } from '../store';
+import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import ScrollLine from '../components/ScrollLine';
+import Menu from '../components/Menu';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,7 +33,6 @@ const Home: NextPage = () => {
     direction: string
   ) => {
     if (destination.index === 1) {
-      console.log('hoang');
       setIsSecondSectionLoaded(true);
     } else if (destination.index === 2) {
       setIsThirdSectionLoaded(true);
@@ -46,6 +46,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      <Menu />
       <Background />
       <ReactFullpage
         licenseKey={'YOUR_KEY_HERE'}
@@ -98,7 +99,7 @@ const Home: NextPage = () => {
   );
 };
 const fadeInCss = css<{ fadeInDone: boolean }>`
-  transition: opacity 500ms var(--easing), transform 800ms var(--easing);
+  transition: opacity 500ms var(--easing), transform 900ms var(--easing);
   transform: ${(props) =>
     props.fadeInDone ? 'translateY(0px)' : 'translateY(-4rem)'};
   opacity: ${(props) => (props.fadeInDone ? '1' : '0')};
@@ -173,7 +174,7 @@ const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`
   }
   ${DescriptionParagraph} {
     ${fadeInCss}
-    transition-delay: 400ms;
+    transition-delay: 500ms;
   }
 `;
 
@@ -189,7 +190,7 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   }
   ${IntroParagraph} {
     ${fadeInCss}
-    transition-delay: 400ms;
+    transition-delay: 500ms;
   }
 `;
 

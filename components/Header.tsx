@@ -3,21 +3,41 @@ import styled, { css } from 'styled-components';
 import SignatureLogo from '../public/signatureLogo.svg';
 import NamePartLogo from '../public/namePartLogo.svg';
 import { FiInstagram, FiLinkedin, FiFacebook } from 'react-icons/fi';
-import { activeSectionAtom } from '../store';
+import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import { sections } from '../data/sectionData';
 
 const Header: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
+  const [isMenuOpen, setIsMenuOpen] = useAtom(isMenuOpenAtom);
   return (
-    <S.Header sectionColor={sections[nextActiveSection].sectionColor}>
+    <S.Header
+      isColorBeige={
+        isMenuOpen
+          ? !sections[nextActiveSection].isColorBeige
+          : sections[nextActiveSection].isColorBeige
+      }
+    >
       <S.Navigation>
         <S.LogoContainer>
           <SignatureLogo />
           <NamePartLogo />
         </S.LogoContainer>
         <VerticalLine />
-        <S.MenuButton>menu</S.MenuButton>
+        <S.MenuActionContainer>
+          <S.MenuButton
+            onClick={() => setIsMenuOpen(true)}
+            isActive={!isMenuOpen}
+          >
+            menu
+          </S.MenuButton>
+          <S.MenuButton
+            onClick={() => setIsMenuOpen(false)}
+            isActive={isMenuOpen}
+          >
+            close
+          </S.MenuButton>
+        </S.MenuActionContainer>
       </S.Navigation>
       <S.SocialMediaWrapper>
         <HorizontalLine />
@@ -41,21 +61,19 @@ const Header: React.FC = () => {
   );
 };
 
-export const colorTransitionCss = css<{ sectionColor: 'beige' | 'blue' }>`
+export const colorTransitionCss = css<{ isColorBeige: boolean }>`
   --textColor: ${(props) =>
-    props.sectionColor === 'beige'
-      ? 'var(--primaryBlue)'
-      : 'var(--secondaryGrey)'};
+    props.isColorBeige ? 'var(--primaryBlue)' : 'var(--secondaryGrey)'};
 `;
 
 const S = {
-  Header: styled.header<{ sectionColor: 'beige' | 'blue' }>`
+  Header: styled.header<{ isColorBeige: boolean }>`
     box-sizing: border-box;
     position: fixed;
     right: 2.4rem;
     top: 2.4rem;
     left: 2.4rem;
-    z-index: 9000;
+    z-index: 10000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +88,7 @@ const S = {
     color: var(--textColor);
     margin-left: 4rem;
     transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
-      color 2s cubic-bezier(0.645, 0.045, 0.355, 1);
+      color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:hover {
       transform: translateY(-0.3rem);
@@ -90,12 +108,26 @@ const S = {
     align-items: center;
   `,
 
-  MenuButton: styled.div`
+  MenuButton: styled.button<{ isActive: boolean }>`
     font-size: 1.8rem;
-    margin: 0 4rem;
     color: var(--textColor);
     font-weight: 600;
-    transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1),
+      transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    transform: ${(props) =>
+      props.isActive ? 'translateY(0)' : 'translateY(-150%)'};
+    &:first-child {
+      position: relative;
+    }
+  `,
+  MenuActionContainer: styled.div`
+    margin: 0 4rem;
+    overflow: hidden;
+    position: relative;
   `,
 };
 
@@ -107,9 +139,9 @@ export const HorizontalLine = styled.div`
 `;
 
 export const VerticalLine = styled.div`
-  height: 2.4rem;
   width: 0.1rem;
   background-color: var(--textColor);
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  height: 2.4rem;
 `;
 export default Header;

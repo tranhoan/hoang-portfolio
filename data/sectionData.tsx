@@ -1,23 +1,23 @@
 export type SectionType = {
   sectionNumber: number;
   name: string;
-  sectionColor: 'blue' | 'beige';
+  isColorBeige: boolean;
 };
 
 export const sections: SectionType[] = [
   {
     sectionNumber: 0,
     name: 'Welcome section',
-    sectionColor: 'blue',
+    isColorBeige: false,
   },
   {
     sectionNumber: 1,
     name: 'About me section',
-    sectionColor: 'beige',
+    isColorBeige: true,
   },
   {
     sectionNumber: 2,
     name: 'Selected work section',
-    sectionColor: 'blue',
+    isColorBeige: false,
   },
 ];
