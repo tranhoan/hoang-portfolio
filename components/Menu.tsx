@@ -65,7 +65,6 @@ const S = {
     align-items: center;
     &::before {
       font-size: 2rem;
-      counter-increment: li;
       content: counter(li, decimal-leading-zero);
       margin-right: 2.4rem;
     }

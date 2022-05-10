@@ -9,6 +9,7 @@ import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import ScrollLine from '../components/ScrollLine';
 import Menu from '../components/Menu';
+import Credit from '../components/Credit';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,6 +49,7 @@ const Home: NextPage = () => {
       <Header />
       <Menu />
       <Background />
+      <Credit />
       <ReactFullpage
         licenseKey={'YOUR_KEY_HERE'}
         scrollingSpeed={900}

@@ -35,12 +35,23 @@ const GlobalStyle = createGlobalStyle`
             transform: scaleY(0)
         }
     };
+    @keyframes scrollLineInX {
+        0% {
+            transform: scaleX(0);
+        }
+    };
     @keyframes reveal {
         0% {
             opacity: 0;
             transform: translateY(8px);
         }
-    }
+    };
+    @keyframes revealX {
+        0% {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+    };
     body, html{ 
         height: 100%;
         margin: 0;
