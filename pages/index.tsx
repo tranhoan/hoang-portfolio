@@ -160,8 +160,9 @@ const DescriptionParagraph = styled.p`
   margin: 0;
 `;
 
-const SelectedWorkWrapper = styled(IntroParagraph)`
-  font-weight: medium;
+const SelectedWorkWrapper = styled(DescriptionParagraph)`
+  color: var(--primaryBeige);
+  font-size: 6.5rem;
 `;
 
 const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`

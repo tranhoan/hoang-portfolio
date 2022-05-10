@@ -51,7 +51,7 @@ const S = {
     display: flex;
     flex-direction: column;
     font-size: 6.5rem;
-    font-weight: 600;
+    font-weight: 500;
     padding: 0;
     margin: 0;
     counter-reset: li;

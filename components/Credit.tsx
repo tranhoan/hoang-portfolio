@@ -36,10 +36,10 @@ const S = {
     font-weight: 500;
     margin-left: 1.6rem;
     transform-origin: center;
-    animation: revealX 1s ease-out 2s backwards;
+    animation: revealX 1s ease-out 1.9s backwards;
   `,
   CreditLine: styled(HorizontalLine)`
-    animation: scrollLineInX 800ms var(--easing) 1.7s backwards;
+    animation: scrollLineInX 500ms var(--easing) 1.7s backwards;
   `,
 };
 export default Credit;
