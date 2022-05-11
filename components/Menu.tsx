@@ -76,13 +76,14 @@ const S = {
     width: 8rem;
   `,
   MenuWrapper: styled.div<{ isBackgroundBeige: boolean; isVisible: boolean }>`
-    width: 100%;
-    height: 100%;
     position: fixed;
-    padding: 2.4rem;
+    margin: 2.4rem;
+    border-radius: 2px;
     box-sizing: border-box;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     --textColor: ${(props) =>
       props.isBackgroundBeige ? 'var(--secondaryGrey)' : 'var(--primaryBlue)'};
     background-color: ${(props) =>

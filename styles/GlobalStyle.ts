@@ -69,6 +69,9 @@ const GlobalStyle = createGlobalStyle`
     #__next{
         height: 100%;
         position: relative;
+        overflow: hidden;
+        border-radius: 3px;
+        box-shadow: 2px 4px 6px #A6A4A28C;
     };
     body:after, body:before {
         content: "";
