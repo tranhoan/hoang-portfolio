@@ -22,7 +22,7 @@ const S = {
     position: fixed;
     left: 2.4rem;
     bottom: 2.4rem;
-    z-index: 10000;
+    z-index: 8500;
     display: flex;
     align-items: center;
     margin-left: 8rem;

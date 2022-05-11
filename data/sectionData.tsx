@@ -3,6 +3,7 @@ export type SectionType = {
   name: string;
   isColorBeige: boolean;
 };
+export const PROJECT_DETAIL_ID = 3;
 
 export const sections: SectionType[] = [
   {
@@ -18,6 +19,11 @@ export const sections: SectionType[] = [
   {
     sectionNumber: 2,
     name: 'Selected work section',
+    isColorBeige: false,
+  },
+  {
+    sectionNumber: PROJECT_DETAIL_ID,
+    name: 'Project detail page section',
     isColorBeige: false,
   },
 ];

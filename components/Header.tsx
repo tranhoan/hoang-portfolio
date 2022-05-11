@@ -19,12 +19,12 @@ const Header: React.FC = () => {
 
   const openMenu = () => {
     setIsMenuOpen(true);
-    window.fullpage_api.setAllowScrolling(false);
+    window?.fullpage_api?.setAllowScrolling(false);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    window.fullpage_api.setAllowScrolling(true);
+    window?.fullpage_api?.setAllowScrolling(true);
   };
   return (
     <S.Header
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
       }
     >
       <S.Navigation>
-        <S.LogoContainer>
+        <S.LogoContainer as='a' href='/'>
           <SignatureLogo />
           <NamePartLogo />
         </S.LogoContainer>
