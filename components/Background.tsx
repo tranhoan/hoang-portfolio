@@ -37,7 +37,7 @@ const S = {
     left: 0;
     overflow: hidden;
     z-index: 8000;
-    animation: reveal 1.5s ease-in;
+    animation: reveal 1s ease-in;
     ${colorTransitionCss}
   `,
   FirstCurve: styled(FirstLine)`

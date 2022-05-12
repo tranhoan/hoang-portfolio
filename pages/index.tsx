@@ -8,13 +8,10 @@ import { useAtom } from 'jotai';
 import ScrollLine from '../components/ScrollLine';
 
 const Home: NextPage = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isFirstSectionLoaded, setIsFirstSectionLoaded] = useState(false);
   const [isSecondSectionLoaded, setIsSecondSectionLoaded] = useState(false);
   const [isThirdSectionLoaded, setIsThirdSectionLoaded] = useState(false);
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const onSectionLeave = (
     origin: Item,
@@ -30,7 +27,9 @@ const Home: NextPage = () => {
     destination: Item,
     direction: string
   ) => {
-    if (destination.index === 1) {
+    if (destination.index === 0) {
+      setIsFirstSectionLoaded(true);
+    } else if (destination.index === 1) {
       setIsSecondSectionLoaded(true);
     } else if (destination.index === 2) {
       setIsThirdSectionLoaded(true);
@@ -52,6 +51,7 @@ const Home: NextPage = () => {
         easingcss3={'cubic-bezier(.82,.28,.34,.62)'}
         onLeave={onSectionLeave}
         afterLoad={onSectionEnter}
+        animateAnchor={true}
         credits={{
           enabled: false,
           label: 'Made with fullPage.js',
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           return (
             <ReactFullpage.Wrapper>
               <IntroSection className={'section'}>
-                <IntroductionWrapper fadeInDone={isLoaded}>
+                <IntroductionWrapper fadeInDone={isFirstSectionLoaded}>
                   <GreetingParagraph>hi there,</GreetingParagraph>
                   <IntroParagraph>
                     my name is Hoang, I am an aspiring frontend developer and UX
