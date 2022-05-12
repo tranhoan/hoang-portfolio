@@ -57,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        overflow: hidden;
         &::-webkit-scrollbar {
             width: 0;
             height: 0;

@@ -20,11 +20,42 @@ const Project: React.FC = () => {
       <S.ProjectDetailContainer>
         <S.ProjectHeader>
           <S.DateContainer>
-            <S.DateLine />
+            <S.ItemLine />
             <S.ProjectYear>from 2022</S.ProjectYear>
           </S.DateContainer>
           <S.ProjectTitle>VisualClass</S.ProjectTitle>
         </S.ProjectHeader>
+        <S.ProjectDescription>
+          <S.Summary>
+            The main challenge of this project was the lack of real
+            communication in distance education. VisualClass is a virtual space
+            simulating real life interactions, creating the feeling of a unified
+            school space.
+          </S.Summary>
+          <S.SideInfoList>
+            <S.InfoItem>
+              <S.ItemHeader>
+                <S.ItemLine />
+                <S.ItemTitle>My Role</S.ItemTitle>
+              </S.ItemHeader>
+              <S.ItemValue>designer, developer</S.ItemValue>
+            </S.InfoItem>
+            <S.InfoItem>
+              <S.ItemHeader>
+                <S.ItemLine />
+                <S.ItemTitle>Stack</S.ItemTitle>
+              </S.ItemHeader>
+              <S.ItemValue>typescript, react, jotai</S.ItemValue>
+            </S.InfoItem>
+            <S.InfoItem>
+              <S.ItemHeader>
+                <S.ItemLine />
+                <S.ItemTitle>Repository</S.ItemTitle>
+              </S.ItemHeader>
+              <S.ItemValue>typescript, react, jotai</S.ItemValue>
+            </S.InfoItem>
+          </S.SideInfoList>
+        </S.ProjectDescription>
       </S.ProjectDetailContainer>
     </S.DetailSection>
   );
@@ -32,7 +63,7 @@ const Project: React.FC = () => {
 
 const S = {
   DetailSection: styled.div`
-    height: 100%;
+    height: calc(100% - 4.8rem);
     background-color: var(--primaryBlue);
     background-clip: content-box;
     box-sizing: border-box;
@@ -48,6 +79,7 @@ const S = {
   DateContainer: styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 4rem;
   `,
   ProjectYear: styled.span`
     font-size: 2rem;
@@ -57,9 +89,47 @@ const S = {
   ProjectTitle: styled.h1`
     font-size: 5rem;
     font-weight: 600;
+    margin: 0;
   `,
-  DateLine: styled(HorizontalLine)`
+  ItemLine: styled(HorizontalLine)`
     width: 4rem;
+  `,
+  ProjectDescription: styled.div`
+    display: grid;
+    grid-template-columns: 80rem 24rem;
+    column-gap: 13.6rem;
+    margin-top: 6.4rem;
+  `,
+  Summary: styled.p`
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 60px;
+    margin: 0;
+  `,
+  SideInfoList: styled.ul`
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+  `,
+  InfoItem: styled.li`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4rem;
+  `,
+  ItemHeader: styled.span`
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.4rem;
+  `,
+  ItemValue: styled.span`
+    font-weight: 400;
+  `,
+  ItemTitle: styled.h4`
+    font-weight: 600;
+    margin: 0 0 0 2.4rem;
   `,
 };
 export default Project;
