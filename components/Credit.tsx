@@ -39,7 +39,7 @@ const S = {
     animation: revealX 1s ease-out 1.9s backwards;
   `,
   CreditLine: styled(HorizontalLine)`
-    animation: scrollLineInX 500ms var(--easing) 1.7s backwards;
+    animation: scrollLineInX 700ms var(--easing) 1.7s backwards;
   `,
 };
 export default Credit;

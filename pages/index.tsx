@@ -3,14 +3,9 @@ import Head from 'next/head';
 import React, { useState, useEffect, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import ReactFullpage, { Item } from '@fullpage/react-fullpage';
-import Header from '../components/Header';
-import Background from '../components/Background';
 import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import ScrollLine from '../components/ScrollLine';
-import Menu from '../components/Menu';
-import Credit from '../components/Credit';
-import { PROJECT_DETAIL_ID } from '../data/sectionData';
 
 const Home: NextPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,13 +44,19 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <ReactFullpage
+        anchors={['1', '2', '3']}
         licenseKey={'YOUR_KEY_HERE'}
-        scrollingSpeed={900}
+        scrollingSpeed={800}
         verticalCentered={false}
         css3={true}
         easingcss3={'cubic-bezier(.82,.28,.34,.62)'}
         onLeave={onSectionLeave}
         afterLoad={onSectionEnter}
+        credits={{
+          enabled: false,
+          label: 'Made with fullPage.js',
+          position: 'right',
+        }}
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
@@ -122,8 +123,6 @@ export const IntroSection = styled.section`
   height: 100vh;
   background-color: var(--primaryBlue);
   background-clip: content-box;
-  box-sizing: border-box;
-  box-shadow: 2px 4px 6px #a6a4a28c;
 `;
 
 const WorkSection = styled(IntroSection)`
@@ -134,7 +133,7 @@ const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBeige);
 `;
 
-const SecondSectionLabel = styled.span`
+const SecondSectionLabel = styled.h3`
   font-size: 2.4rem;
   font-weight: 600;
   color: var(--primaryBlue);
@@ -181,7 +180,6 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   color: var(--secondaryGrey);
   margin-left: 24rem;
   padding-top: 16rem;
-  height: 100%;
 
   ${GreetingParagraph} {
     ${fadeInCss}

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.23",
+    "@fullpage/react-fullpage": "^0.1.24",
     "@svgr/webpack": "^6.2.1",
     "jotai": "^1.6.5",
     "next": "12.1.5",

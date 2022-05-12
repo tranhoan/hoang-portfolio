@@ -49,11 +49,10 @@ const GlobalStyle = createGlobalStyle`
     @keyframes revealX {
         0% {
             opacity: 0;
-            transform: translateY(-8px);
+            transform: translateX(-8px);
         }
     };
     body, html{ 
-        height: 100%;
         margin: 0;
         box-sizing: border-box;
         scrollbar-width: none;
@@ -67,11 +66,11 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     };
     #__next{
-        height: 100%;
         position: relative;
         overflow: hidden;
         border-radius: 3px;
-        box-shadow: 2px 4px 6px #A6A4A28C;
+        box-sizing: border-box;
+        height: 100vh !important;
     };
     body:after, body:before {
         content: "";
