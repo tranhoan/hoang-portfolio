@@ -69,47 +69,9 @@ const GlobalStyle = createGlobalStyle`
     #__next{
         position: relative;
         overflow: hidden;
-        border-radius: 3px;
         box-sizing: border-box;
         height: 100vh !important;
-    };
-    body:after, body:before {
-        content: "";
-        will-change: top left;
-        backface-visibility: hidden;
-        position: fixed;
-        left: 0;
-        width: 100%;
-        height: 2.4rem;
-        background: #fff;
-        z-index: 20000;
-        box-sizing: border-box;
-    };
-    body:before {
-        top: 0;
-    };
-    body:after {
-        bottom: 0;
-    }
-    &:before, &:after {
-        content: "";
-        will-change: top left;
-        backface-visibility: hidden;
-        position: fixed;
-        top: 0;
-        height: 100%;
-        width: 2.4rem;
-        background: #fff;
-        z-index: 21000;
-        box-sizing: border-box;
-    };
-    &:before{
-        left:0;
-    };
-    &:after {
-        right: 0;
-    }
-
+     };
     button {
         font-family: inherit;
         padding: 0;

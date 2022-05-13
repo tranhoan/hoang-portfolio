@@ -58,7 +58,7 @@ const S = {
   Footer: styled.div<{ isColorBeige: boolean }>`
     display: flex;
     position: fixed;
-    bottom: 2.4rem;
+    bottom: 0;
     right: 17.6rem;
     ${colorTransitionCss}
   `,

@@ -86,8 +86,18 @@ const Home: NextPage = () => {
                 <SectionMainWrapper fadeInDone={isThirdSectionLoaded}>
                   <ThirdSectionLabel>Selected work</ThirdSectionLabel>
                   <SelectedWorkWrapper>
-                    <ProjectLink href='/project/1'>visualclass</ProjectLink>,
-                    hub, felsight, visuflights, min todo, hoang tran
+                    <ProjectLink href='/project/visualclass'>
+                      visualclass
+                    </ProjectLink>
+                    ,<ProjectLink href='/project/hub'>hub</ProjectLink>,
+                    <ProjectLink href='/project/felsight'>felsight</ProjectLink>
+                    ,
+                    <ProjectLink href='/project/visuflights'>
+                      visuflights
+                    </ProjectLink>
+                    ,<ProjectLink href='/project/mintodo'>min todo</ProjectLink>
+                    ,<ProjectLink href='/project/hoang'>hoang tran</ProjectLink>
+                    ,
                   </SelectedWorkWrapper>
                 </SectionMainWrapper>
               </WorkSection>
@@ -110,6 +120,7 @@ const GreetingParagraph = styled.p`
   font-size: 4.5rem;
   font-weight: 600;
   margin-bottom: 5.6rem;
+  margin-top: 0;
 `;
 
 const IntroParagraph = styled.p`
@@ -138,6 +149,7 @@ const SecondSectionLabel = styled.h3`
   font-weight: 600;
   color: var(--primaryBlue);
   margin-bottom: 4rem;
+  margin-top: 0;
 `;
 
 const ThirdSectionLabel = styled(SecondSectionLabel)`
@@ -161,8 +173,8 @@ const SelectedWorkWrapper = styled(DescriptionParagraph)`
 const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
-  margin-left: 20.4rem;
-  padding-top: 19.6rem;
+  margin-left: 26.4rem;
+  padding-top: 22.4rem;
   max-width: 1300px;
 
   ${SecondSectionLabel} {
@@ -178,8 +190,8 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
   color: var(--secondaryGrey);
-  margin-left: 24rem;
-  padding-top: 16rem;
+  margin-left: 26.4rem;
+  padding-top: 26.4rem;
 
   ${GreetingParagraph} {
     ${fadeInCss}

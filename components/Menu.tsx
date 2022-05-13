@@ -43,7 +43,7 @@ const S = {
     justify-content: flex-start;
     width: 100%;
     height: 100%;
-    padding: 19.4rem 8rem;
+    padding: 22.4rem 10.4rem;
     box-sizing: border-box;
     color: var(--textColor);
   `,
@@ -77,7 +77,6 @@ const S = {
   `,
   MenuWrapper: styled.div<{ isBackgroundBeige: boolean; isVisible: boolean }>`
     position: fixed;
-    margin: 2.4rem;
     border-radius: 2px;
     box-sizing: border-box;
     top: 0;

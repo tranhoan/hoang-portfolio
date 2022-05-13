@@ -40,12 +40,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body
-          className={'body'}
-          style={{
-            padding: '2.4rem',
-          }}
-        >
+        <body className={'body'}>
           <Main />
           <NextScript />
         </body>

@@ -2,18 +2,27 @@ import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { IntroSection } from '../..';
-import { HorizontalLine } from '../../../components/Header';
-import { PROJECT_DETAIL_ID } from '../../../data/sectionData';
-import { activeSectionAtom } from '../../../store';
+import { HorizontalLine, IconLink } from '../../components/Header';
+import {
+  ProjectDetailType,
+  ProjectNames,
+  projects,
+} from '../../data/projectDetails';
+import { PROJECT_DETAIL_ID } from '../../data/sectionData';
+import { activeSectionAtom } from '../../store';
+import { FiGithub } from 'react-icons/fi';
 
 const Project: React.FC = () => {
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
   const router = useRouter();
-  const { id } = router.query;
+  const id =
+    router.query.id instanceof Array
+      ? router.query.id[0]
+      : router.query.id ?? 'felsight';
+  const project = projects[id as ProjectNames];
   useEffect(() => {
     setNextActiveSection(PROJECT_DETAIL_ID);
-  }, [setNextActiveSection]);
+  }, [setNextActiveSection, project]);
 
   return (
     <S.DetailSection>
@@ -21,38 +30,34 @@ const Project: React.FC = () => {
         <S.ProjectHeader>
           <S.DateContainer>
             <S.ItemLine />
-            <S.ProjectYear>from 2022</S.ProjectYear>
+            <S.ProjectYear>from {project.yearMade}</S.ProjectYear>
           </S.DateContainer>
-          <S.ProjectTitle>VisualClass</S.ProjectTitle>
+          <S.ProjectTitle>{project.name}</S.ProjectTitle>
         </S.ProjectHeader>
         <S.ProjectDescription>
-          <S.Summary>
-            The main challenge of this project was the lack of real
-            communication in distance education. VisualClass is a virtual space
-            simulating real life interactions, creating the feeling of a unified
-            school space.
-          </S.Summary>
+          <S.Summary>{project.summary}</S.Summary>
           <S.SideInfoList>
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
-                <S.ItemTitle>My Role</S.ItemTitle>
+                <S.ItemTitle>my role</S.ItemTitle>
               </S.ItemHeader>
-              <S.ItemValue>designer, developer</S.ItemValue>
+              <S.ItemValue>{project.myRole}</S.ItemValue>
             </S.InfoItem>
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
-                <S.ItemTitle>Stack</S.ItemTitle>
+                <S.ItemTitle>stack</S.ItemTitle>
               </S.ItemHeader>
-              <S.ItemValue>typescript, react, jotai</S.ItemValue>
+              <S.ItemValue>{project.stack}</S.ItemValue>
             </S.InfoItem>
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
-                <S.ItemTitle>Repository</S.ItemTitle>
+                <S.RepositoryIconLink href={project.repository} target='_blank'>
+                  <FiGithub />
+                </S.RepositoryIconLink>
               </S.ItemHeader>
-              <S.ItemValue>typescript, react, jotai</S.ItemValue>
             </S.InfoItem>
           </S.SideInfoList>
         </S.ProjectDescription>
@@ -63,7 +68,7 @@ const Project: React.FC = () => {
 
 const S = {
   DetailSection: styled.div`
-    height: calc(100% - 4.8rem);
+    height: 100%;
     background-color: var(--primaryBlue);
     background-clip: content-box;
     box-sizing: border-box;
@@ -75,7 +80,9 @@ const S = {
     margin-left: 36rem;
     padding-top: 19.2rem;
   `,
-  ProjectHeader: styled.div``,
+  ProjectHeader: styled.div`
+    animation: reveal 1s ease-out 700ms backwards;
+  `,
   DateContainer: styled.div`
     display: flex;
     align-items: center;
@@ -98,10 +105,11 @@ const S = {
     display: grid;
     grid-template-columns: 80rem 24rem;
     column-gap: 13.6rem;
-    margin-top: 6.4rem;
+    margin-top: 5.6rem;
+    animation: reveal 1s ease-out 1s backwards;
   `,
   Summary: styled.p`
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 500;
     line-height: 60px;
     margin: 0;
@@ -122,7 +130,7 @@ const S = {
   ItemHeader: styled.span`
     display: flex;
     align-items: center;
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
   `,
   ItemValue: styled.span`
     font-weight: 400;
@@ -130,6 +138,9 @@ const S = {
   ItemTitle: styled.h4`
     font-weight: 600;
     margin: 0 0 0 2.4rem;
+  `,
+  RepositoryIconLink: styled(IconLink)`
+    margin-left: 2.4rem;
   `,
 };
 export default Project;

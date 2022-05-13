@@ -53,21 +53,18 @@ const Header: React.FC = () => {
       </S.Navigation>
       <S.SocialMediaWrapper>
         <HorizontalLine />
-        <S.IconLink
+        <IconLink
           href='https://www.instagram.com/alwayshoangry/'
           target='_blank'
         >
           <FiInstagram size={20} />
-        </S.IconLink>
-        <S.IconLink
-          href='https://www.facebook.com/hoang.t.quoc'
-          target='_blank'
-        >
+        </IconLink>
+        <IconLink href='https://www.facebook.com/hoang.t.quoc' target='_blank'>
           <FiFacebook size={20} />
-        </S.IconLink>
-        <S.IconLink href='https://www.linkedin.com/in/hoangtq' target='_blank'>
+        </IconLink>
+        <IconLink href='https://www.linkedin.com/in/hoangtq' target='_blank'>
           <FiLinkedin size={20} />
-        </S.IconLink>
+        </IconLink>
       </S.SocialMediaWrapper>
     </S.Header>
   );
@@ -82,29 +79,19 @@ const S = {
   Header: styled.header<{ isColorBeige: boolean }>`
     box-sizing: border-box;
     position: fixed;
-    right: 2.4rem;
-    top: 2.4rem;
-    left: 2.4rem;
+    right: 0;
+    top: 0;
+    left: 0;
     z-index: 10000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 6.4rem 8rem 0 8rem;
+    margin: 8.8rem 10.4rem 0 10.4rem;
     ${colorTransitionCss}
   `,
   SocialMediaWrapper: styled.div`
     display: flex;
     align-items: center;
-  `,
-  IconLink: styled.a`
-    color: var(--textColor);
-    margin-left: 4rem;
-    transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
-      color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-    &:hover {
-      transform: translateY(-0.3rem);
-    }
   `,
   LogoContainer: styled.div`
     display: flex;
@@ -164,5 +151,18 @@ export const VerticalLine = styled.div`
   background-color: var(--textColor);
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
   height: 2.4rem;
+`;
+
+export const IconLink = styled.a`
+  color: var(--textColor);
+  margin-left: 4rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1),
+    color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    transform: translateY(-0.3rem);
+  }
 `;
 export default Header;

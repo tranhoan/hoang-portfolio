@@ -20,12 +20,12 @@ const S = {
     transform: rotate(-90deg);
     transform-origin: top left;
     position: fixed;
-    left: 2.4rem;
-    bottom: 2.4rem;
+    left: 0;
+    bottom: 0;
     z-index: 8500;
     display: flex;
     align-items: center;
-    margin-left: 8rem;
+    margin-left: 10.4rem;
     margin-bottom: 4.8rem;
     color: var(--textColor);
     ${colorTransitionCss}
