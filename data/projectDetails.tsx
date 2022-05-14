@@ -35,7 +35,7 @@ export const projects: ProjectObjectType = {
     name: 'Hub',
     myRole: 'lead designer, developer',
     stack: 'react, typescript',
-    repository: 'under NDA',
+    repository: '',
     summary: `Hub was a first big scale project that I had been a part of since its birth. The challenge of this project was to solve the chaos caused by the overwhelming number of faculty systems with diverse UI
     CTU FEE employees had to use in their day to day work life. In the long run, Hub is a system supposed to unify dozens of applications under one consistent user interface as well as integrate future requirements as modules inztead of creating new systems.`,
   },
@@ -44,7 +44,7 @@ export const projects: ProjectObjectType = {
     name: 'Felsight',
     myRole: 'designer, developer',
     stack: 'jquery, jsf',
-    repository: 'under NDA',
+    repository: '',
     summary:
       'Felsight is a portal used by many students at CTU FEE to make their daily school life more manageable. User friendly timetables, personal events, interactive school map and a lot more - all at one place.',
   },

@@ -9,21 +9,21 @@ export const sections: SectionType[] = [
   {
     sectionNumber: 0,
     name: 'Welcome section',
-    isColorBeige: false,
+    isColorBeige: true,
   },
   {
     sectionNumber: 1,
     name: 'About me section',
-    isColorBeige: true,
+    isColorBeige: false,
   },
   {
     sectionNumber: 2,
     name: 'Selected work section',
-    isColorBeige: false,
+    isColorBeige: true,
   },
   {
     sectionNumber: PROJECT_DETAIL_ID,
     name: 'Project detail page section',
-    isColorBeige: false,
+    isColorBeige: true,
   },
 ];

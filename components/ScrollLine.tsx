@@ -38,7 +38,6 @@ const paginationCss = css`
 const S = {
   TextWrapper: styled.div`
     font-size: 1.6rem;
-    font-weight: 400;
     color: var(--textColor);
     margin-bottom: 3.2rem;
     animation: reveal 1s ease-out 1.5s backwards;
@@ -64,7 +63,6 @@ const S = {
   `,
   SectionPagination: styled.div`
     font-size: 2.4rem;
-    font-weight: 600;
     color: var(--textColor);
     align-self: end;
     margin-bottom: 6.4rem;

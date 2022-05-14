@@ -72,7 +72,7 @@ const Header: React.FC = () => {
 
 export const colorTransitionCss = css<{ isColorBeige: boolean }>`
   --textColor: ${(props) =>
-    props.isColorBeige ? 'var(--primaryBlue)' : 'var(--secondaryGrey)'};
+    props.isColorBeige ? 'var(--primaryBlue)' : 'var(--primaryBeige)'};
 `;
 
 const S = {
@@ -109,8 +109,8 @@ const S = {
 
   MenuButton: styled.span<{ isActive: boolean }>`
     font-size: 1.8rem;
+    font-weight: 500;
     color: var(--textColor);
-    font-weight: 600;
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1),
       transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
     position: absolute;

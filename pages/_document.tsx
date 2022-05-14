@@ -39,7 +39,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel='stylesheet' href='https://use.typekit.net/feq4jbc.css' />
+        </Head>
         <body className={'body'}>
           <Main />
           <NextScript />

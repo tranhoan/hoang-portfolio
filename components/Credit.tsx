@@ -33,7 +33,6 @@ const S = {
   `,
   CreditText: styled.span`
     font-size: 1.3rem;
-    font-weight: 500;
     margin-left: 1.6rem;
     transform-origin: center;
     animation: revealX 1s ease-out 1.9s backwards;

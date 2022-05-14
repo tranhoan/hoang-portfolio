@@ -2,15 +2,15 @@ import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { HorizontalLine, IconLink } from '../../components/Header';
 import {
-  ProjectDetailType,
-  ProjectNames,
-  projects,
-} from '../../data/projectDetails';
-import { PROJECT_DETAIL_ID } from '../../data/sectionData';
+  colorTransitionCss,
+  HorizontalLine,
+  IconLink,
+} from '../../components/Header';
+import { ProjectNames, projects } from '../../data/projectDetails';
+import { PROJECT_DETAIL_ID, sections } from '../../data/sectionData';
 import { activeSectionAtom } from '../../store';
-import { FiGithub } from 'react-icons/fi';
+import { ProjectLink } from '..';
 
 const Project: React.FC = () => {
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
@@ -24,8 +24,15 @@ const Project: React.FC = () => {
     setNextActiveSection(PROJECT_DETAIL_ID);
   }, [setNextActiveSection, project]);
 
+  const projectLink = project.repository ? (
+    <ProjectLink href={project.repository} target='_blank'>
+      github
+    </ProjectLink>
+  ) : (
+    <>under nda</>
+  );
   return (
-    <S.DetailSection>
+    <S.DetailSection isColorBeige={sections[nextActiveSection].isColorBeige}>
       <S.ProjectDetailContainer>
         <S.ProjectHeader>
           <S.DateContainer>
@@ -54,10 +61,9 @@ const Project: React.FC = () => {
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
-                <S.RepositoryIconLink href={project.repository} target='_blank'>
-                  <FiGithub />
-                </S.RepositoryIconLink>
+                <S.ItemTitle>links</S.ItemTitle>
               </S.ItemHeader>
+              <S.ItemValue>{projectLink}</S.ItemValue>
             </S.InfoItem>
           </S.SideInfoList>
         </S.ProjectDescription>
@@ -67,12 +73,13 @@ const Project: React.FC = () => {
 };
 
 const S = {
-  DetailSection: styled.div`
+  DetailSection: styled.div<{ isColorBeige: boolean }>`
     height: 100%;
-    background-color: var(--primaryBlue);
+    background-color: var(--primaryBeige);
     background-clip: content-box;
     box-sizing: border-box;
-    color: var(--secondaryGrey);
+    color: var(--textColor);
+    ${colorTransitionCss};
   `,
   ProjectDetailContainer: styled.div`
     display: flex;
@@ -95,7 +102,7 @@ const S = {
   `,
   ProjectTitle: styled.h1`
     font-size: 5rem;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
   `,
   ItemLine: styled(HorizontalLine)`
@@ -110,7 +117,7 @@ const S = {
   `,
   Summary: styled.p`
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 60px;
     margin: 0;
   `,
@@ -133,10 +140,10 @@ const S = {
     margin-bottom: 2rem;
   `,
   ItemValue: styled.span`
-    font-weight: 400;
+    width: fit-content;
   `,
   ItemTitle: styled.h4`
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 0 0 2.4rem;
   `,
   RepositoryIconLink: styled(IconLink)`

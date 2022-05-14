@@ -87,17 +87,17 @@ const Home: NextPage = () => {
                   <ThirdSectionLabel>Selected work</ThirdSectionLabel>
                   <SelectedWorkWrapper>
                     <ProjectLink href='/project/visualclass'>
-                      visualclass
+                      visualclass,
                     </ProjectLink>
-                    ,<ProjectLink href='/project/hub'>hub</ProjectLink>,
-                    <ProjectLink href='/project/felsight'>felsight</ProjectLink>
-                    ,
+                    <ProjectLink href='/project/hub'>hub,</ProjectLink>
+                    <ProjectLink href='/project/felsight'>
+                      felsight,
+                    </ProjectLink>
                     <ProjectLink href='/project/visuflights'>
-                      visuflights
+                      visuflights,
                     </ProjectLink>
-                    ,<ProjectLink href='/project/mintodo'>min todo</ProjectLink>
-                    ,<ProjectLink href='/project/hoang'>hoang tran</ProjectLink>
-                    ,
+                    <ProjectLink href='/project/mintodo'>min todo,</ProjectLink>
+                    <ProjectLink href='/project/hoang'>hoang tran,</ProjectLink>
                   </SelectedWorkWrapper>
                 </SectionMainWrapper>
               </WorkSection>
@@ -118,8 +118,7 @@ const fadeInCss = css<{ fadeInDone: boolean }>`
 
 const GreetingParagraph = styled.p`
   font-size: 4.5rem;
-  font-weight: 600;
-  margin-bottom: 5.6rem;
+  margin-bottom: 4.8rem;
   margin-top: 0;
 `;
 
@@ -132,42 +131,43 @@ const IntroParagraph = styled.p`
 
 export const IntroSection = styled.section`
   height: 100vh;
-  background-color: var(--primaryBlue);
+  background-color: var(--primaryBeige);
   background-clip: content-box;
 `;
 
 const WorkSection = styled(IntroSection)`
-  color: var(--secondaryGrey);
+  color: var(--primaryBlue);
 `;
 
 const AboutSection = styled(IntroSection)`
-  background-color: var(--primaryBeige);
+  background-color: var(--primaryBlue);
 `;
 
 const SecondSectionLabel = styled.h3`
   font-size: 2.4rem;
-  font-weight: 600;
-  color: var(--primaryBlue);
+  color: var(--primaryBeige);
   margin-bottom: 4rem;
   margin-top: 0;
+  font-weight: 400;
 `;
 
 const ThirdSectionLabel = styled(SecondSectionLabel)`
-  color: var(--secondaryGrey);
+  color: var(--primaryBlue);
 `;
 
 const DescriptionParagraph = styled.p`
   font-size: 4.5rem;
-  color: var(--primaryBlue);
+  color: var(--primaryBeige);
   line-height: 9rem;
-  font-weight: medium;
   padding: 0;
   margin: 0;
 `;
 
 const SelectedWorkWrapper = styled(DescriptionParagraph)`
-  color: var(--primaryBeige);
+  color: var(--primaryBlue);
   font-size: 6.5rem;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`
@@ -189,7 +189,7 @@ const SectionMainWrapper = styled.div<{ fadeInDone: boolean }>`
 const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
-  color: var(--secondaryGrey);
+  color: var(--primaryBlue);
   margin-left: 26.4rem;
   padding-top: 26.4rem;
 
@@ -202,6 +202,27 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   }
 `;
 
-const ProjectLink = styled.a``;
+export const ProjectLink = styled.a`
+  text-decoration: none;
+  color: var(--primaryBlue);
+  padding-right: 1rem;
+  &:after {
+    content: '';
+    display: block;
+    width: 20%;
+    height: 2px;
+    border-radius: 8px;
+    transition: width 0.4s var(--easing);
+    background-color: var(--primaryBlue);
+    margin-left: 2%;
+  }
+  &:hover::after {
+    width: 90%;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+`;
 
 export default Home;

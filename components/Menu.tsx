@@ -84,7 +84,7 @@ const S = {
     right: 0;
     bottom: 0;
     --textColor: ${(props) =>
-      props.isBackgroundBeige ? 'var(--secondaryGrey)' : 'var(--primaryBlue)'};
+      props.isBackgroundBeige ? 'var(--primaryBeige)' : 'var(--primaryBlue)'};
     background-color: ${(props) =>
       props.isBackgroundBeige ? 'var(--primaryBlue)' : 'var(--primaryBeige)'};
 
