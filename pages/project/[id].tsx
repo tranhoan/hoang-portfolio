@@ -25,9 +25,9 @@ const Project: React.FC = () => {
   }, [setNextActiveSection, project]);
 
   const projectLink = project.repository ? (
-    <ProjectLink href={project.repository} target='_blank'>
+    <S.RepositoryLink href={project.repository} target='_blank'>
       github
-    </ProjectLink>
+    </S.RepositoryLink>
   ) : (
     <>under nda</>
   );
@@ -148,6 +148,9 @@ const S = {
   `,
   RepositoryIconLink: styled(IconLink)`
     margin-left: 2.4rem;
+  `,
+  RepositoryLink: styled(ProjectLink)`
+    margin-inline-end: 1rem;
   `,
 };
 export default Project;

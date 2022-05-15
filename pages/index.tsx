@@ -205,7 +205,7 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
 export const ProjectLink = styled.a`
   text-decoration: none;
   color: var(--primaryBlue);
-  padding-right: 1rem;
+  margin-right: 2rem;
   &:after {
     content: '';
     display: block;
