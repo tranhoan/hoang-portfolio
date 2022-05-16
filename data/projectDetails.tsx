@@ -11,7 +11,7 @@ export enum ProjectNames {
   VISUALCLASS = 'visualclass',
   HUB = 'hub',
   FELSIGHT = 'felsight',
-  VISUFLIGHT = 'visuflight',
+  VISUFLIGHT = 'visuflights',
   MINTODO = 'mintodo',
   HOANG = 'hoang',
 }
@@ -48,7 +48,7 @@ export const projects: ProjectObjectType = {
     summary:
       'Felsight is a portal used by many students at CTU FEE to make their daily school life more manageable. User friendly timetables, personal events, interactive school map and a lot more - all at one place.',
   },
-  visuflight: {
+  visuflights: {
     yearMade: '2020',
     name: 'Visuflights',
     myRole: 'developer',

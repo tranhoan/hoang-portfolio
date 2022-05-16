@@ -11,6 +11,7 @@ import { ProjectNames, projects } from '../../data/projectDetails';
 import { PROJECT_DETAIL_ID, sections } from '../../data/sectionData';
 import { activeSectionAtom } from '../../store';
 import { ProjectLink } from '..';
+import { motion } from 'framer-motion';
 
 const Project: React.FC = () => {
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
