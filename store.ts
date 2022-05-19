@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import { projects } from './data/projectDetails';
 
 type SectionLoadAtomType = {
   isSectionLoaded: boolean;

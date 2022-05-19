@@ -46,9 +46,11 @@ const S = {
   ScrollContainer: styled.div<{
     isLast: boolean;
   }>`
-    display: ${(props) => (props.isLast ? 'none' : 'flex')};
+    display: flex;
     flex-direction: column;
     align-items: center;
+    transform: ${(props) => (props.isLast ? 'scaleY(0)' : 'scaleY(1)')};
+    transition: transform 500ms var(--easing);
   `,
   ScrollLine: styled(VerticalLine)`
     height: 22.4rem;
@@ -69,6 +71,7 @@ const S = {
     padding-left: 3.2rem;
     min-width: 6.4rem;
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    animation: reveal 800ms var(--easing) 900ms backwards;
     overflow: hidden;
   `,
 
@@ -92,7 +95,6 @@ const S = {
 
 const Numerator = styled.span<{ page: number }>`
   position: relative;
-  /* margin-right: 1.6rem; */
   display: inline-block;
   ${(props) =>
     props.page === 1 &&

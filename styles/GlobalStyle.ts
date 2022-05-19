@@ -4,7 +4,6 @@ const GlobalStyle = createGlobalStyle`
 :root {
     font-size: 62.5%;
     height: 100%;
-    background-color: white;
     --primaryBlue: #002A5A;
     --primaryBeige: #EFE8D7;
     --textColor: #EFE8D7;

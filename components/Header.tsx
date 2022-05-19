@@ -6,6 +6,8 @@ import { FiInstagram, FiLinkedin, FiFacebook } from 'react-icons/fi';
 import { activeSectionAtom, isMenuOpenAtom } from '../store';
 import { useAtom } from 'jotai';
 import { sections } from '../data/sectionData';
+import CustomLink from './CustomLink';
+import Link from 'next/link';
 
 declare global {
   interface Window {
@@ -35,10 +37,12 @@ const Header: React.FC = () => {
       }
     >
       <S.Navigation>
-        <S.LogoContainer as='a' href='/'>
-          <SignatureLogo />
-          <NamePartLogo />
-        </S.LogoContainer>
+        <Link href='/#0' passHref>
+          <S.LogoContainer as='a'>
+            <SignatureLogo />
+            <NamePartLogo />
+          </S.LogoContainer>
+        </Link>
         <VerticalLine />
         <S.MenuActionWrapper>
           <S.ButtonContainer>

@@ -1,32 +1,50 @@
+import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { imageVariants } from '../../animations/animations';
+import { ProjectLink } from '../../components/CustomLink';
 import {
   colorTransitionCss,
   HorizontalLine,
   IconLink,
 } from '../../components/Header';
-import { ProjectNames, projects } from '../../data/projectDetails';
+import {
+  ProjectDetailType,
+  ProjectNames,
+  projects,
+} from '../../data/projectDetails';
 import { PROJECT_DETAIL_ID, sections } from '../../data/sectionData';
 import { activeSectionAtom } from '../../store';
-import { ProjectLink } from '..';
-import { motion } from 'framer-motion';
 
 const Project: React.FC = () => {
   const [nextActiveSection, setNextActiveSection] = useAtom(activeSectionAtom);
+  const [currentProject, setCurrentProject] = useState(
+    'felsight' as ProjectNames
+  );
   const router = useRouter();
-  const id =
-    router.query.id instanceof Array
-      ? router.query.id[0]
-      : router.query.id ?? 'felsight';
-  const project = projects[id as ProjectNames];
+  const prevProjectRef = useRef<ProjectNames>();
   useEffect(() => {
     setNextActiveSection(PROJECT_DETAIL_ID);
-  }, [setNextActiveSection, project]);
+  }, [setNextActiveSection]);
 
-  const projectLink = project.repository ? (
-    <S.RepositoryLink href={project.repository} target='_blank'>
+  useEffect(() => {
+    prevProjectRef.current = currentProject as ProjectNames;
+    if (router.isReady) {
+      const id =
+        router.query.id instanceof Array
+          ? router.query.id[0]
+          : router.query.id ?? prevProjectRef.current;
+      setCurrentProject(id as ProjectNames);
+    }
+  }, [router.isReady, router.query, currentProject]);
+
+  const projectLink = projects[currentProject].repository ? (
+    <S.RepositoryLink
+      href={projects[currentProject].repository}
+      target='_blank'
+    >
       github
     </S.RepositoryLink>
   ) : (
@@ -34,30 +52,37 @@ const Project: React.FC = () => {
   );
   return (
     <S.DetailSection isColorBeige={sections[nextActiveSection].isColorBeige}>
-      <S.ProjectDetailContainer>
+      <S.ProjectDetailContainer
+        variants={imageVariants}
+        initial={false}
+        animate={false}
+        exit='exit'
+      >
         <S.ProjectHeader>
           <S.DateContainer>
             <S.ItemLine />
-            <S.ProjectYear>from {project.yearMade}</S.ProjectYear>
+            <S.ProjectYear>
+              from {projects[currentProject].yearMade}
+            </S.ProjectYear>
           </S.DateContainer>
-          <S.ProjectTitle>{project.name}</S.ProjectTitle>
+          <S.ProjectTitle>{projects[currentProject].name}</S.ProjectTitle>
         </S.ProjectHeader>
         <S.ProjectDescription>
-          <S.Summary>{project.summary}</S.Summary>
+          <S.Summary>{projects[currentProject].summary}</S.Summary>
           <S.SideInfoList>
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
                 <S.ItemTitle>my role</S.ItemTitle>
               </S.ItemHeader>
-              <S.ItemValue>{project.myRole}</S.ItemValue>
+              <S.ItemValue>{projects[currentProject].myRole}</S.ItemValue>
             </S.InfoItem>
             <S.InfoItem>
               <S.ItemHeader>
                 <S.ItemLine />
                 <S.ItemTitle>stack</S.ItemTitle>
               </S.ItemHeader>
-              <S.ItemValue>{project.stack}</S.ItemValue>
+              <S.ItemValue>{projects[currentProject].stack}</S.ItemValue>
             </S.InfoItem>
             <S.InfoItem>
               <S.ItemHeader>
@@ -74,7 +99,7 @@ const Project: React.FC = () => {
 };
 
 const S = {
-  DetailSection: styled.div<{ isColorBeige: boolean }>`
+  DetailSection: styled(motion.div)<{ isColorBeige: boolean }>`
     height: 100%;
     background-color: var(--primaryBeige);
     background-clip: content-box;
@@ -82,7 +107,7 @@ const S = {
     color: var(--textColor);
     ${colorTransitionCss};
   `,
-  ProjectDetailContainer: styled.div`
+  ProjectDetailContainer: styled(motion.div)`
     display: flex;
     flex-direction: column;
     margin-left: 36rem;

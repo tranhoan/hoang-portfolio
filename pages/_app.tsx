@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <MotionConfig isValidProp={isValidProp}>
           <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-            <Component {...pageProps} key={router.route} />
+            <Component {...pageProps} key={router.asPath} />
           </AnimatePresence>
         </MotionConfig>
       </Layout>
