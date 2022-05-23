@@ -9,6 +9,9 @@ import ScrollLine from '../components/ScrollLine';
 import { motion } from 'framer-motion';
 import CustomLink from '../components/CustomLink';
 import { imageVariants } from '../animations/animations';
+import OverflowContainer, {
+  TextContainer,
+} from '../components/OverflowContainer';
 
 const Home: NextPage = () => {
   const [isFirstSectionLoaded, setIsFirstSectionLoaded] = useState(false);
@@ -64,23 +67,77 @@ const Home: NextPage = () => {
             <ReactFullpage.Wrapper>
               <IntroSection className={'section'}>
                 <IntroductionWrapper fadeInDone={isFirstSectionLoaded}>
-                  <GreetingParagraph>hi there,</GreetingParagraph>
+                  <GreetingParagraph
+                    transitionDelay='0s'
+                    className='overflow-row'
+                  >
+                    hi there,
+                  </GreetingParagraph>
                   <IntroParagraph>
-                    my name is Hoang, I am an aspiring frontend developer and UX
-                    designer based in Prague.
+                    <StyledOverflowContainer
+                      transitionDelay='500ms'
+                      className='overflow-row'
+                    >
+                      my name is Hoang, I am an aspiring
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='600ms'
+                      className='overflow-row'
+                    >
+                      frontend developer and UX
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='700ms'
+                      className='overflow-row'
+                    >
+                      designer based in Prague.
+                    </StyledOverflowContainer>
                   </IntroParagraph>
                 </IntroductionWrapper>
               </IntroSection>
               <AboutSection className={'section'}>
                 <SectionMainWrapper fadeInDone={isSecondSectionLoaded}>
-                  <SecondSectionLabel>About me</SecondSectionLabel>
+                  <SecondSectionLabel
+                    className='overflow-row'
+                    transitionDelay='0s'
+                  >
+                    About me
+                  </SecondSectionLabel>
                   <DescriptionParagraph>
-                    I'm a CTU graduate specializing in Human computer
-                    interaction and someone who has always been passionate about
-                    visually pleasing aesthetics. As a designer, I aim to create
-                    interfaces with usability and users' needs in mind. As a
-                    developer I create interactive experience using technologies
-                    such as React, Typescript.
+                    <StyledOverflowContainer
+                      transitionDelay='500ms'
+                      className='overflow-row'
+                    >
+                      I'm a CTU graduate specializing in Human computer
+                      interaction and
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='600ms'
+                      className='overflow-row'
+                    >
+                      someone who has always been passionate about visually
+                      pleasing
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='700ms'
+                      className='overflow-row'
+                    >
+                      As a designer, I aim to create interfaces with usability
+                      and
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='800ms'
+                      className='overflow-row'
+                    >
+                      users' needs in mind. As a developer I create interactive
+                      experience
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='900ms'
+                      className='overflow-row'
+                    >
+                      using technologies such as React, Typescript.
+                    </StyledOverflowContainer>
                   </DescriptionParagraph>
                 </SectionMainWrapper>
               </AboutSection>
@@ -92,18 +149,35 @@ const Home: NextPage = () => {
                   animate={false}
                   exit='exit'
                 >
-                  <ThirdSectionLabel>Selected work</ThirdSectionLabel>
+                  <ThirdSectionLabel
+                    className='overflow-row'
+                    transitionDelay='0s'
+                  >
+                    Selected work
+                  </ThirdSectionLabel>
                   <SelectedWorkWrapper>
-                    <CustomLink href='/project/visualclass'>
-                      visualclass,
-                    </CustomLink>
-                    <CustomLink href='/project/hub'>hub,</CustomLink>
-                    <CustomLink href='/project/felsight'>felsight,</CustomLink>
-                    <CustomLink href='/project/visuflights'>
-                      visuflights,
-                    </CustomLink>
-                    <CustomLink href='/project/mintodo'>min todo,</CustomLink>
-                    <CustomLink href='/project/hoang'>hoang tran,</CustomLink>
+                    <StyledOverflowContainer
+                      transitionDelay='500ms'
+                      className='flex-row'
+                    >
+                      <CustomLink href='/project/visualclass'>
+                        visualclass,
+                      </CustomLink>
+                      <CustomLink href='/project/hub'>hub,</CustomLink>
+                      <CustomLink href='/project/felsight'>
+                        felsight,
+                      </CustomLink>
+                      <CustomLink href='/project/visuflights'>
+                        visuflights,
+                      </CustomLink>
+                      <CustomLink href='/project/mintodo'>min todo,</CustomLink>
+                    </StyledOverflowContainer>
+                    <StyledOverflowContainer
+                      transitionDelay='600ms'
+                      className='flex-row'
+                    >
+                      <CustomLink href='/project/hoang'>hoang tran,</CustomLink>
+                    </StyledOverflowContainer>
                   </SelectedWorkWrapper>
                 </SectionMainWrapper>
               </WorkSection>
@@ -115,23 +189,21 @@ const Home: NextPage = () => {
     </MainContent>
   );
 };
-const fadeInCss = css<{ fadeInDone: boolean }>`
-  transition: opacity 500ms var(--easing), transform 1s var(--easing);
+export const fadeInCss = css<{ fadeInDone: boolean }>`
+  transition: opacity 500ms var(--easing),
+    transform 1s var(--easing) var(--delay);
   transform: ${(props) =>
-    props.fadeInDone ? 'translateY(0px)' : 'translateY(20rem)'};
+    props.fadeInDone ? 'translateY(0px)' : 'translateY(100%)'};
   opacity: ${(props) => (props.fadeInDone ? '1' : '0')};
 `;
 
-const IntroMask = styled.span`
-  overflow: clip;
-`;
-const GreetingParagraph = styled.p`
+const GreetingParagraph = styled(OverflowContainer)`
   font-size: 4.5rem;
   margin-bottom: 4.8rem;
   margin-top: 0;
 `;
 
-const IntroParagraph = styled.p`
+const IntroParagraph = styled.span`
   font-size: 6.5rem;
   line-height: 9rem;
   max-width: 98rem;
@@ -153,10 +225,9 @@ const AboutSection = styled(IntroSection)`
   background-color: var(--primaryBlue);
 `;
 
-const SecondSectionLabel = styled.h3`
+const SecondSectionLabel = styled(GreetingParagraph)`
   font-size: 2.4rem;
   color: var(--primaryBeige);
-  margin-bottom: 4rem;
   margin-top: 0;
   font-weight: 400;
 `;
@@ -165,7 +236,7 @@ const ThirdSectionLabel = styled(SecondSectionLabel)`
   color: var(--primaryBlue);
 `;
 
-const DescriptionParagraph = styled.p`
+const DescriptionParagraph = styled.span`
   font-size: 4.5rem;
   color: var(--primaryBeige);
   line-height: 9rem;
@@ -173,30 +244,16 @@ const DescriptionParagraph = styled.p`
   margin: 0;
 `;
 
-const SelectedWorkWrapper = styled(DescriptionParagraph)`
+export const SelectedWorkWrapper = styled(DescriptionParagraph)`
   color: var(--primaryBlue);
   font-size: 6.5rem;
   display: flex;
   flex-wrap: wrap;
 `;
 
-const SectionMainWrapper = styled(motion.div)<{ fadeInDone: boolean }>`
-  display: flex;
-  flex-direction: column;
-  margin-left: 26.4rem;
-  padding-top: 22.4rem;
-  max-width: 1300px;
+export const StyledOverflowContainer = styled(OverflowContainer)``;
 
-  ${SecondSectionLabel} {
-    ${fadeInCss}
-  }
-  ${DescriptionParagraph} {
-    ${fadeInCss}
-    transition-delay: 500ms;
-  }
-`;
-
-const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
+const IntroductionWrapper = styled(motion.div)<{ fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
   color: var(--primaryBlue);
@@ -204,18 +261,14 @@ const IntroductionWrapper = styled.div<{ fadeInDone: boolean }>`
   padding-top: 26.4rem;
   perspective: 2rem;
 
-  ${IntroMask} {
-    transform: ${(props) =>
-      props.fadeInDone ? 'translateZ(0px)' : 'translateZ(1rem)'};
-    transition: transform 1.5s ease-in-out;
-  }
-  ${GreetingParagraph} {
+  ${TextContainer} {
     ${fadeInCss}
   }
-  ${IntroParagraph} {
-    ${fadeInCss}
-    transition-delay: 500ms;
-  }
+`;
+
+const SectionMainWrapper = styled(IntroductionWrapper)`
+  padding-top: 22.4rem;
+  max-width: 1300px;
 `;
 
 const MainContent = styled(motion.div)``;

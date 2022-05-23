@@ -1,13 +1,42 @@
 import { useAtom } from 'jotai';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { sections } from '../data/sectionData';
-import { activeSectionAtom, isMenuOpenAtom } from '../store';
-import { colorTransitionCss, HorizontalLine } from './Header';
+import { useManageMenu } from '../hooks/menuHooks';
+import { activeSectionAtom } from '../store';
+import { HorizontalLine } from './Header';
+import OverflowContainer, { TextContainer } from './OverflowContainer';
 
 const Menu: React.FC = () => {
-  const [isMenuOpen] = useAtom(isMenuOpenAtom);
   const [nextActiveSection] = useAtom(activeSectionAtom);
+  const [closeMenu, , isMenuOpen] = useManageMenu();
+  const router = useRouter();
+  const homeLink =
+    router.route === '/' ? (
+      <S.MenuLink href='#0'>home</S.MenuLink>
+    ) : (
+      <Link href='/#0' passHref>
+        <S.MenuLink>home</S.MenuLink>
+      </Link>
+    );
+  const aboutLink =
+    router.route === '/' ? (
+      <S.MenuLink href='#1'>about me</S.MenuLink>
+    ) : (
+      <Link href='/#1' passHref>
+        <S.MenuLink>about me</S.MenuLink>
+      </Link>
+    );
+  const workLink =
+    router.route === '/' ? (
+      <S.MenuLink href='#2'>selected work</S.MenuLink>
+    ) : (
+      <Link href='/#2' passHref>
+        <S.MenuLink>selected work</S.MenuLink>
+      </Link>
+    );
   return (
     <S.MenuWrapper
       isBackgroundBeige={sections[nextActiveSection].isColorBeige}
@@ -15,27 +44,59 @@ const Menu: React.FC = () => {
     >
       <S.MenuContainer>
         <S.MenuList>
-          <S.MenuItem>
+          <MenuItem
+            transitionDelay='1s'
+            className='overflow-list-item'
+            forwardedAs='li'
+          >
             <S.MenuHorizontalLine />
-            <S.MenuItemTitle>home</S.MenuItemTitle>
-          </S.MenuItem>
-          <S.MenuItem>
+            <S.MenuItemTitle onClick={() => closeMenu()}>
+              {homeLink}
+            </S.MenuItemTitle>
+          </MenuItem>
+          <MenuItem
+            transitionDelay='1.2s'
+            className='overflow-list-item'
+            forwardedAs='li'
+          >
             <S.MenuHorizontalLine />
-            <S.MenuItemTitle>about me</S.MenuItemTitle>
-          </S.MenuItem>
-          <S.MenuItem>
+            <S.MenuItemTitle onClick={() => closeMenu()}>
+              {aboutLink}
+            </S.MenuItemTitle>
+          </MenuItem>
+          <MenuItem
+            transitionDelay='1.4s'
+            className='overflow-list-item'
+            forwardedAs='li'
+          >
             <S.MenuHorizontalLine />
-            <S.MenuItemTitle>selected work </S.MenuItemTitle>
-          </S.MenuItem>
-          <S.MenuItem>
+            <S.MenuItemTitle onClick={() => closeMenu()}>
+              {workLink}
+            </S.MenuItemTitle>
+          </MenuItem>
+          <MenuItem
+            transitionDelay='1.6s'
+            className='overflow-list-item'
+            forwardedAs='li'
+          >
             <S.MenuHorizontalLine />
-            <S.MenuItemTitle>my resume </S.MenuItemTitle>
-          </S.MenuItem>
+            <S.MenuItemTitle>
+              <S.MenuLink target='_blank' href='/hoang_resume.pdf'>
+                my resume
+              </S.MenuLink>
+            </S.MenuItemTitle>
+          </MenuItem>
         </S.MenuList>
       </S.MenuContainer>
     </S.MenuWrapper>
   );
 };
+
+const MenuItem = styled(OverflowContainer)`
+  list-style-position: inside;
+  display: flex;
+  align-items: center;
+`;
 
 const S = {
   MenuContainer: styled.div`
@@ -50,24 +111,13 @@ const S = {
   MenuList: styled.ol`
     display: flex;
     flex-direction: column;
+    gap: 6.4rem;
     font-size: 6.5rem;
     font-weight: 500;
     padding: 0;
     margin: 0;
     counter-reset: li;
     list-style-type: none;
-  `,
-  MenuItem: styled.li`
-    list-style-position: inside;
-    counter-increment: li;
-    margin-bottom: 6.4rem;
-    display: flex;
-    align-items: center;
-    &::before {
-      font-size: 2rem;
-      content: counter(li, decimal-leading-zero);
-      margin-right: 2.4rem;
-    }
   `,
   MenuItemTitle: styled.span`
     margin-left: 5.6rem;
@@ -83,24 +133,44 @@ const S = {
     left: 0;
     right: 0;
     bottom: 0;
-    --textColor: ${(props) =>
-      props.isBackgroundBeige ? 'var(--primaryBeige)' : 'var(--primaryBlue)'};
-    background-color: ${(props) =>
-      props.isBackgroundBeige ? 'var(--primaryBlue)' : 'var(--primaryBeige)'};
+    --textColor: var(--primaryBeige);
+    background-color: var(--primaryBlue);
 
-    transition: transform 0.7s var(--easing), var(--zIndexTransition);
+    z-index: 9000;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
     ${(props) =>
       props.isVisible
         ? css`
-            --zIndexTransition: z-index 0s 0s;
-            z-index: 9000;
             transform: translateY(0);
+            transition: transform 0.5s cubic-bezier(0.246, 0.75, 0.187, 1);
           `
         : css`
-            --zIndexTransition: z-index 0s 0.8s;
             transform: translateY(100%);
-            z-index: -1000;
+            transition: transform 0.7s cubic-bezier(0.246, 0.75, 0.187, 1) 2s;
           `}
+    ${TextContainer} {
+      counter-increment: li;
+      &::before {
+        font-size: 2rem;
+        content: counter(li, decimal-leading-zero);
+        margin-right: 2.4rem;
+      }
+      transition: transform 0.75s var(--easing) var(--delay);
+      transform: ${(props) =>
+        props.isVisible ? 'translateY(0%)' : 'translateY(110%)'};
+    }
+  `,
+  MenuLink: styled.a`
+    color: var(--primaryBeige);
+    font-weight: 400;
+    transition: letter-spacing 350ms ease;
+    &:hover {
+      letter-spacing: 0.2rem;
+    }
+    &:visited {
+      color: inherit;
+    }
   `,
 };
 export default Menu;

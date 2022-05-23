@@ -10,11 +10,7 @@ import {
   HorizontalLine,
   IconLink,
 } from '../../components/Header';
-import {
-  ProjectDetailType,
-  ProjectNames,
-  projects,
-} from '../../data/projectDetails';
+import { ProjectNames, projects } from '../../data/projectDetails';
 import { PROJECT_DETAIL_ID, sections } from '../../data/sectionData';
 import { activeSectionAtom } from '../../store';
 
@@ -50,6 +46,7 @@ const Project: React.FC = () => {
   ) : (
     <>under nda</>
   );
+  console.log(currentProject);
   return (
     <S.DetailSection isColorBeige={sections[nextActiveSection].isColorBeige}>
       <S.ProjectDetailContainer

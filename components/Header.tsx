@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 import SignatureLogo from '../public/signatureLogo.svg';
 import NamePartLogo from '../public/namePartLogo.svg';
 import { FiInstagram, FiLinkedin, FiFacebook } from 'react-icons/fi';
-import { activeSectionAtom, isMenuOpenAtom } from '../store';
+import { activeSectionAtom } from '../store';
 import { useAtom } from 'jotai';
 import { sections } from '../data/sectionData';
-import CustomLink from './CustomLink';
 import Link from 'next/link';
+import { useManageMenu } from '../hooks/menuHooks';
+import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
 
 declare global {
   interface Window {
@@ -17,28 +19,31 @@ declare global {
 
 const Header: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
-  const [isMenuOpen, setIsMenuOpen] = useAtom(isMenuOpenAtom);
-
-  const openMenu = () => {
-    setIsMenuOpen(true);
-    window?.fullpage_api?.setAllowScrolling(false);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    window?.fullpage_api?.setAllowScrolling(true);
-  };
+  const [closeMenu, openMenu, isMenuOpen] = useManageMenu();
+  const router = useRouter();
+  const logoLink =
+    router.route === '/' ? (
+      <S.LogoContainer href='#0'>
+        <SignatureLogo />
+        <NamePartLogo />
+      </S.LogoContainer>
+    ) : (
+      <Link href='/#0' passHref>
+        <S.LogoContainer>
+          <SignatureLogo />
+          <NamePartLogo />
+        </S.LogoContainer>
+      </Link>
+    );
   return (
     <S.Header
       isColorBeige={
-        isMenuOpen
-          ? !sections[nextActiveSection].isColorBeige
-          : sections[nextActiveSection].isColorBeige
+        isMenuOpen ? false : sections[nextActiveSection].isColorBeige
       }
     >
       <S.Navigation>
-        <Link href='/#0' passHref>
-          <S.LogoContainer as='a'>
+        <Link href={router.route === '/' ? '#0' : '/#0'} passHref>
+          <S.LogoContainer>
             <SignatureLogo />
             <NamePartLogo />
           </S.LogoContainer>
@@ -97,7 +102,7 @@ const S = {
     display: flex;
     align-items: center;
   `,
-  LogoContainer: styled.div`
+  LogoContainer: styled(motion.a)`
     display: flex;
     align-items: baseline;
     margin-right: 4rem;
@@ -113,7 +118,6 @@ const S = {
 
   MenuButton: styled.span<{ isActive: boolean }>`
     font-size: 1.8rem;
-    font-weight: 500;
     color: var(--textColor);
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1),
       transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
@@ -132,9 +136,9 @@ const S = {
     overflow: hidden;
     position: relative;
     min-width: 5.6rem;
-    transition: letter-spacing 0.12s var(--easing);
+    transition: letter-spacing 350ms ease;
     &:hover {
-      letter-spacing: 2px;
+      letter-spacing: 0.1rem;
     }
   `,
   ButtonContainer: styled.div`

@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --textColor: #EFE8D7;
     --easing: cubic-bezier(.215,.61,.355,1);
     --zIndexTransition: z-index 0s ease 0s;
+    --delay: 0s;
     scroll-behavior: smooth;
     font-family: 'orpheuspro', 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: 0.05rem;
