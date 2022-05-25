@@ -5,7 +5,7 @@ import { DescriptionParagraph, SectionMainWrapper } from './DesktopContent';
 const MobileContent: React.FC = () => {
   return (
     <S.ContentMobileContainer>
-      <S.MobileSectionMainWrapper fadeInDone={true}>
+      <S.MobileSectionMainWrapper $fadeInDone={true}>
         <S.ApologyDescriptionParagraph>
           Sorry, the mobile version is currently being worked on.
         </S.ApologyDescriptionParagraph>

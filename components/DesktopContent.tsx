@@ -53,7 +53,7 @@ const DesktopContainer: React.FC = () => {
           return (
             <ReactFullpage.Wrapper>
               <IntroSection className={'section'}>
-                <IntroductionWrapper fadeInDone={isFirstSectionLoaded}>
+                <IntroductionWrapper $fadeInDone={isFirstSectionLoaded}>
                   <GreetingParagraph
                     transitionDelay='0s'
                     className='overflow-row'
@@ -83,7 +83,7 @@ const DesktopContainer: React.FC = () => {
                 </IntroductionWrapper>
               </IntroSection>
               <AboutSection className={'section'}>
-                <SectionMainWrapper fadeInDone={isSecondSectionLoaded}>
+                <SectionMainWrapper $fadeInDone={isSecondSectionLoaded}>
                   <SecondSectionLabel
                     className='overflow-row'
                     transitionDelay='0s'
@@ -130,7 +130,7 @@ const DesktopContainer: React.FC = () => {
               </AboutSection>
               <WorkSection className={'section'}>
                 <SectionMainWrapper
-                  fadeInDone={isThirdSectionLoaded}
+                  $fadeInDone={isThirdSectionLoaded}
                   variants={imageVariants}
                   initial={false}
                   animate={false}
@@ -177,12 +177,12 @@ const DesktopContainer: React.FC = () => {
   );
 };
 
-export const fadeInCss = css<{ fadeInDone: boolean }>`
+export const fadeInCss = css<{ $fadeInDone: boolean }>`
   transition: opacity 500ms var(--easing),
     transform 1s var(--easing) var(--delay);
   transform: ${(props) =>
-    props.fadeInDone ? 'translateY(0px)' : 'translateY(100%)'};
-  opacity: ${(props) => (props.fadeInDone ? '1' : '0')};
+    props.$fadeInDone ? 'translateY(0px)' : 'translateY(100%)'};
+  opacity: ${(props) => (props.$fadeInDone ? '1' : '0')};
 `;
 
 const GreetingParagraph = styled(OverflowContainer)`
@@ -250,7 +250,7 @@ export const SelectedWorkWrapper = styled(DescriptionParagraph)`
 
 export const StyledOverflowContainer = styled(OverflowContainer)``;
 
-const IntroductionWrapper = styled(motion.div)<{ fadeInDone: boolean }>`
+const IntroductionWrapper = styled(motion.div)<{ $fadeInDone: boolean }>`
   display: flex;
   flex-direction: column;
   color: var(--primaryBlue);
