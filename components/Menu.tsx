@@ -48,6 +48,7 @@ const Menu: React.FC = () => {
             transitionDelay='1s'
             className='overflow-list-item'
             forwardedAs='li'
+            key={'home-item'}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle onClick={() => closeMenu()}>
@@ -55,6 +56,7 @@ const Menu: React.FC = () => {
             </S.MenuItemTitle>
           </MenuItem>
           <MenuItem
+            key={'about-item'}
             transitionDelay='1.2s'
             className='overflow-list-item'
             forwardedAs='li'
@@ -68,6 +70,7 @@ const Menu: React.FC = () => {
             transitionDelay='1.4s'
             className='overflow-list-item'
             forwardedAs='li'
+            key={'work-item'}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle onClick={() => closeMenu()}>
@@ -78,6 +81,7 @@ const Menu: React.FC = () => {
             transitionDelay='1.6s'
             className='overflow-list-item'
             forwardedAs='li'
+            key={'resume-item'}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle>
@@ -104,20 +108,24 @@ const S = {
     justify-content: flex-start;
     width: 100%;
     height: 100%;
-    padding: 22.4rem 10.4rem;
+    padding: 22.4rem 10.4rem 3.2rem 10.4rem;
     box-sizing: border-box;
     color: var(--textColor);
   `,
   MenuList: styled.ol`
     display: flex;
     flex-direction: column;
-    gap: 6.4rem;
-    font-size: clamp(2rem, 1rem + 3vw, 6.5rem);
+    gap: min(6.4rem, 4vw);
+    font-size: clamp(2rem, 1rem + 2.9vw, 6.5rem);
     font-weight: 500;
     padding: 0;
     margin: 0;
     counter-reset: li;
     list-style-type: none;
+
+    @media (max-height: 800px) {
+      font-size: 4.5rem;
+    }
   `,
   MenuItemTitle: styled.span`
     margin-left: 5.6rem;

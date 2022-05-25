@@ -133,11 +133,19 @@ const S = {
     font-size: clamp(1rem, 1rem + 0.8vw, 2rem);
     font-weight: 400;
     margin-left: 2.4rem;
+
+    @media (max-height: 900px) {
+      font-size: 1.6rem;
+    }
   `,
   ProjectTitle: styled.h1`
     font-size: clamp(1.2rem, 1rem + 2.2vw, 5rem);
     font-weight: 500;
     margin: 0;
+
+    @media (max-height: 900px) {
+      font-size: 3.2rem;
+    }
   `,
   ItemLine: styled(HorizontalLine)`
     width: 4rem;
@@ -149,11 +157,15 @@ const S = {
     margin-top: 5.6rem;
     animation: reveal 1s ease-out 1s backwards;
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1440px) {
       grid-template-columns: unset;
       margin-top: 3.2rem;
       max-width: 80%;
       gap: 3.2rem;
+    }
+
+    @media (max-height: 900px) {
+      font-size: 2rem;
     }
   `,
   Summary: styled.p`
@@ -161,6 +173,10 @@ const S = {
     font-weight: 400;
     line-height: 60px;
     margin: 0;
+
+    @media (max-height: 900px) {
+      font-size: 2rem;
+    }
   `,
   SideInfoList: styled.ul`
     display: flex;
@@ -170,9 +186,13 @@ const S = {
     padding: 0;
     font-size: clamp(1rem, 1rem + 0.8vw, 2rem);
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1440px) {
       flex-direction: row;
       gap: 6.4rem;
+    }
+
+    @media (max-height: 900px) {
+      font-size: 1.6rem;
     }
   `,
   InfoItem: styled.li`

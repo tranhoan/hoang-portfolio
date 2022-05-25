@@ -186,9 +186,9 @@ const StyledHeader = styled.header<{ isColorBeige: boolean }>`
       display: none;
     }
   }
-  ${S.LogoContainer}, ${S.MenuActionWrapper} {
-    @media (max-width: 1200px) {
-      transform: scale(0.8);
+  ${S.LogoContainer}, ${S.MenuActionWrapper}, ${S.SocialMediaWrapper} {
+    @media (max-width: 1200px), (max-height: 800px) {
+      transform: scale(0.85);
     }
   }
 `;

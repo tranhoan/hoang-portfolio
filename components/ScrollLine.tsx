@@ -42,6 +42,10 @@ const S = {
     margin-bottom: 3.2rem;
     animation: reveal 1s ease-out 1.5s backwards;
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    @media (max-height: 800px) {
+      font-size: clamp(1rem, 1rem + 0.5vh, 1.6rem);
+    }
   `,
   ScrollContainer: styled.div<{
     isLast: boolean;
@@ -54,7 +58,7 @@ const S = {
   `,
   ScrollLine: styled(VerticalLine)`
     animation: scrollLineIn 800ms var(--easing) 1.2s backwards;
-    height: min(15vw, 22.4rem);
+    height: min(15vw, 22.4rem, 25vh);
   `,
   Footer: styled.div<{ isColorBeige: boolean }>`
     display: flex;
@@ -72,6 +76,10 @@ const S = {
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
     animation: reveal 800ms var(--easing) 900ms backwards;
     overflow: hidden;
+
+    @media (max-height: 800px) {
+      font-size: clamp(1rem, 1rem + 1vh, 2.4rem);
+    }
   `,
 
   FirstPage: styled.span`

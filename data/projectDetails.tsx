@@ -36,8 +36,7 @@ export const projects: ProjectObjectType = {
     myRole: 'lead designer, developer',
     stack: 'react, typescript',
     repository: '',
-    summary: `Hub was a first big scale project that I had been a part of since its birth. The challenge of this project was to solve the chaos caused by the overwhelming number of faculty systems with diverse UI
-    CTU FEE employees had to use in their day to day work life. In the long run, Hub is a system supposed to unify dozens of applications under one consistent user interface as well as integrate future requirements as modules inztead of creating new systems.`,
+    summary: `Hub was a first big scale project that I had been a part of since its conception. In the long run, Hub is a faculty system whose objective si to unify dozens of applications under one consistent user interface as well as integrate future requirements as modules instead of creating new systems.`,
   },
   felsight: {
     yearMade: '2017 to now',

@@ -116,7 +116,7 @@ const DesktopContainer: React.FC = () => {
                       transitionDelay='800ms'
                       className='overflow-row'
                     >
-                      users&apos; needs in mind. As a developer I create
+                      users&apos; needs in mind. As a developer, I create
                       interactive experience
                     </StyledOverflowContainer>
                     <StyledOverflowContainer
@@ -189,6 +189,11 @@ const GreetingParagraph = styled(OverflowContainer)`
   font-size: clamp(1.2rem, 1rem + 2vw, 4.5rem);
   margin-bottom: min(4.8rem, 7%);
   margin-top: 0;
+
+  @media (max-height: 800px) {
+    font-size: 3.2rem;
+    margin-bottom: 2.4rem;
+  }
 `;
 
 const IntroParagraph = styled.span`
@@ -198,6 +203,11 @@ const IntroParagraph = styled.span`
   margin: 0;
 
   @media (max-width: 1200px) {
+    line-height: 7rem;
+  }
+
+  @media (max-height: 800px) {
+    font-size: 4.5rem;
     line-height: 7rem;
   }
 `;
@@ -236,8 +246,12 @@ export const DescriptionParagraph = styled.span`
   margin: 0;
   width: fit-content;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1440px) {
     line-height: 7rem;
+  }
+
+  @media (max-height: 800px) {
+    font-size: clamp(1rem, 2.2vw, 2.8rem);
   }
 `;
 
@@ -255,7 +269,7 @@ const IntroductionWrapper = styled(motion.div)<{ $fadeInDone: boolean }>`
   flex-direction: column;
   color: var(--primaryBlue);
   margin-left: min(26.4rem, 14vw);
-  padding-top: min(26.4rem, 35vw);
+  padding-top: min(26.4rem, 35vw, 30vh);
   perspective: 2rem;
   width: fit-content;
 
@@ -265,7 +279,7 @@ const IntroductionWrapper = styled(motion.div)<{ $fadeInDone: boolean }>`
 `;
 
 export const SectionMainWrapper = styled(IntroductionWrapper)`
-  padding-top: 22.4rem;
+  padding-top: min(22.4rem, 25vh);
   max-width: 1300px;
 `;
 
