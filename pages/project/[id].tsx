@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { imageVariants } from '../../animations/animations';
 import { ProjectLink } from '../../components/CustomLink';
+import Head from 'next/head';
 import {
   colorTransitionCss,
   HorizontalLine,
@@ -46,52 +47,58 @@ const Project: React.FC = () => {
   ) : (
     <>under nda</>
   );
-  console.log(currentProject);
   return (
-    <S.DetailSection isColorBeige={sections[nextActiveSection].isColorBeige}>
-      <S.ProjectDetailContainer
-        variants={imageVariants}
-        initial={false}
-        animate={false}
-        exit='exit'
-      >
-        <S.ProjectHeader>
-          <S.DateContainer>
-            <S.ItemLine />
-            <S.ProjectYear>
-              from {projects[currentProject].yearMade}
-            </S.ProjectYear>
-          </S.DateContainer>
-          <S.ProjectTitle>{projects[currentProject].name}</S.ProjectTitle>
-        </S.ProjectHeader>
-        <S.ProjectDescription>
-          <S.Summary>{projects[currentProject].summary}</S.Summary>
-          <S.SideInfoList>
-            <S.InfoItem>
-              <S.ItemHeader>
-                <S.ItemLine />
-                <S.ItemTitle>my role</S.ItemTitle>
-              </S.ItemHeader>
-              <S.ItemValue>{projects[currentProject].myRole}</S.ItemValue>
-            </S.InfoItem>
-            <S.InfoItem>
-              <S.ItemHeader>
-                <S.ItemLine />
-                <S.ItemTitle>stack</S.ItemTitle>
-              </S.ItemHeader>
-              <S.ItemValue>{projects[currentProject].stack}</S.ItemValue>
-            </S.InfoItem>
-            <S.InfoItem>
-              <S.ItemHeader>
-                <S.ItemLine />
-                <S.ItemTitle>links</S.ItemTitle>
-              </S.ItemHeader>
-              <S.ItemValue>{projectLink}</S.ItemValue>
-            </S.InfoItem>
-          </S.SideInfoList>
-        </S.ProjectDescription>
-      </S.ProjectDetailContainer>
-    </S.DetailSection>
+    <>
+      <Head>
+        <title>Project detail</title>
+        <meta name='description' content='Project detail' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <S.DetailSection isColorBeige={sections[nextActiveSection].isColorBeige}>
+        <S.ProjectDetailContainer
+          variants={imageVariants}
+          initial={false}
+          animate={false}
+          exit='exit'
+        >
+          <S.ProjectHeader>
+            <S.DateContainer>
+              <S.ItemLine />
+              <S.ProjectYear>
+                from {projects[currentProject].yearMade}
+              </S.ProjectYear>
+            </S.DateContainer>
+            <S.ProjectTitle>{projects[currentProject].name}</S.ProjectTitle>
+          </S.ProjectHeader>
+          <S.ProjectDescription>
+            <S.Summary>{projects[currentProject].summary}</S.Summary>
+            <S.SideInfoList>
+              <S.InfoItem>
+                <S.ItemHeader>
+                  <S.ItemLine />
+                  <S.ItemTitle>my role</S.ItemTitle>
+                </S.ItemHeader>
+                <S.ItemValue>{projects[currentProject].myRole}</S.ItemValue>
+              </S.InfoItem>
+              <S.InfoItem>
+                <S.ItemHeader>
+                  <S.ItemLine />
+                  <S.ItemTitle>stack</S.ItemTitle>
+                </S.ItemHeader>
+                <S.ItemValue>{projects[currentProject].stack}</S.ItemValue>
+              </S.InfoItem>
+              <S.InfoItem>
+                <S.ItemHeader>
+                  <S.ItemLine />
+                  <S.ItemTitle>links</S.ItemTitle>
+                </S.ItemHeader>
+                <S.ItemValue>{projectLink}</S.ItemValue>
+              </S.InfoItem>
+            </S.SideInfoList>
+          </S.ProjectDescription>
+        </S.ProjectDetailContainer>
+      </S.DetailSection>
+    </>
   );
 };
 

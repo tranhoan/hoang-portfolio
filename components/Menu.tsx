@@ -147,7 +147,7 @@ const S = {
           `
         : css`
             transform: translateY(100%);
-            transition: transform 0.7s cubic-bezier(0.246, 0.75, 0.187, 1) 2s;
+            transition: transform 0.7s cubic-bezier(0.246, 0.75, 0.187, 1) 1.8s;
           `}
     ${TextContainer} {
       counter-increment: li;
@@ -156,7 +156,7 @@ const S = {
         content: counter(li, decimal-leading-zero);
         margin-right: 2.4rem;
       }
-      transition: transform 0.75s var(--easing) var(--delay);
+      transition: transform 0.5s var(--easing) var(--delay);
       transform: ${(props) =>
         props.isVisible ? 'translateY(0%)' : 'translateY(110%)'};
     }
