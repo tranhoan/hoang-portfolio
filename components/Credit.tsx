@@ -17,7 +17,6 @@ const Credit: React.FC = () => {
 
 const S = {
   CreditContainer: styled.div<{ isColorBeige: boolean }>`
-    transform: rotate(-90deg);
     transform-origin: top left;
     position: fixed;
     left: 0;
@@ -25,11 +24,15 @@ const S = {
     z-index: 8500;
     display: flex;
     align-items: center;
-    margin-left: 10.4rem;
+    margin-left: min(10.4rem, 10vw);
     margin-bottom: 4.8rem;
     color: var(--textColor);
     ${colorTransitionCss}
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    @media (min-width: 1400px) {
+      transform: rotate(-90deg);
+    }
   `,
   CreditText: styled.span`
     font-size: 1.3rem;

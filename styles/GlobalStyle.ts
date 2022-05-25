@@ -78,7 +78,9 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         cursor: pointer;
     }
-    
+    .fp-watermark {
+        display: none !important;
+    }
 }
 `;
 export default GlobalStyle;

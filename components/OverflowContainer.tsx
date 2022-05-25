@@ -22,6 +22,7 @@ const OverflowContainer: React.FC<Props> = ({
 
 const Row = styled.div`
   overflow: hidden;
+  width: fit-content;
 `;
 
 export const TextContainer = styled.div<{ delay: string }>`

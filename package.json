@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.24",
+    "@fullpage/react-fullpage": "^0.1.25",
     "@svgr/webpack": "^6.2.1",
     "framer-motion": "^6.3.3",
     "jotai": "^1.6.5",

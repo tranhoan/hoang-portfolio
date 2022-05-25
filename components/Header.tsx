@@ -36,7 +36,7 @@ const Header: React.FC = () => {
       </Link>
     );
   return (
-    <S.Header
+    <StyledHeader
       isColorBeige={
         isMenuOpen ? false : sections[nextActiveSection].isColorBeige
       }
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
         <Link href={router.route === '/' ? '#0' : '/#0'} passHref>
           <S.LogoContainer>
             <SignatureLogo />
-            <NamePartLogo />
+            <StyledNameLogo />
           </S.LogoContainer>
         </Link>
         <VerticalLine />
@@ -75,9 +75,16 @@ const Header: React.FC = () => {
           <FiLinkedin size={20} />
         </IconLink>
       </S.SocialMediaWrapper>
-    </S.Header>
+    </StyledHeader>
   );
 };
+
+export const VerticalLine = styled.div`
+  width: 0.1rem;
+  background-color: var(--textColor);
+  transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  height: 2.4rem;
+`;
 
 export const colorTransitionCss = css<{ isColorBeige: boolean }>`
   --textColor: ${(props) =>
@@ -85,19 +92,6 @@ export const colorTransitionCss = css<{ isColorBeige: boolean }>`
 `;
 
 const S = {
-  Header: styled.header<{ isColorBeige: boolean }>`
-    box-sizing: border-box;
-    position: fixed;
-    right: 0;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 8.8rem 10.4rem 0 10.4rem;
-    ${colorTransitionCss}
-  `,
   SocialMediaWrapper: styled.div`
     display: flex;
     align-items: center;
@@ -154,13 +148,6 @@ export const HorizontalLine = styled.div`
   transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 `;
 
-export const VerticalLine = styled.div`
-  width: 0.1rem;
-  background-color: var(--textColor);
-  transition: background-color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-  height: 2.4rem;
-`;
-
 export const IconLink = styled.a`
   color: var(--textColor);
   margin-left: 4rem;
@@ -171,6 +158,38 @@ export const IconLink = styled.a`
 
   &:hover {
     transform: translateY(-0.3rem);
+  }
+`;
+
+const StyledNameLogo = styled(NamePartLogo)`
+  @media (max-width: 600) {
+    display: none;
+  }
+`;
+
+const StyledHeader = styled.header<{ isColorBeige: boolean }>`
+  box-sizing: border-box;
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: min(10.4rem, 10vw);
+  margin-top: min(8.8rem, 10vw);
+  ${colorTransitionCss}
+
+  ${StyledNameLogo}, ${S.MenuActionWrapper}, ${S.SocialMediaWrapper}, ${VerticalLine} {
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+  ${S.LogoContainer}, ${S.MenuActionWrapper} {
+    @media (max-width: 1200px) {
+      transform: scale(0.8);
+    }
   }
 `;
 export default Header;

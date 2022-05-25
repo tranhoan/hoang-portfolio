@@ -37,7 +37,7 @@ const paginationCss = css`
 
 const S = {
   TextWrapper: styled.div`
-    font-size: 1.6rem;
+    font-size: clamp(1rem, 1rem + 0.5vw, 1.6rem);
     color: var(--textColor);
     margin-bottom: 3.2rem;
     animation: reveal 1s ease-out 1.5s backwards;
@@ -53,23 +53,22 @@ const S = {
     transition: transform 500ms var(--easing);
   `,
   ScrollLine: styled(VerticalLine)`
-    height: 22.4rem;
     animation: scrollLineIn 800ms var(--easing) 1.2s backwards;
+    height: min(15vw, 22.4rem);
   `,
   Footer: styled.div<{ isColorBeige: boolean }>`
     display: flex;
     position: fixed;
     bottom: 0;
-    right: 17.6rem;
+    right: min(8vw, 17.6rem);
     ${colorTransitionCss}
   `,
   SectionPagination: styled.div`
-    font-size: 2.4rem;
+    font-size: clamp(1rem, 1rem + 0.8vw, 2.4rem);
     color: var(--textColor);
     align-self: end;
-    margin-bottom: 6.4rem;
+    margin-bottom: min(6.4rem, 6vw);
     padding-left: 3.2rem;
-    min-width: 6.4rem;
     transition: color 1s cubic-bezier(0.645, 0.045, 0.355, 1);
     animation: reveal 800ms var(--easing) 900ms backwards;
     overflow: hidden;

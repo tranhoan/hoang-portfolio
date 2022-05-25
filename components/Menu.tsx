@@ -112,7 +112,7 @@ const S = {
     display: flex;
     flex-direction: column;
     gap: 6.4rem;
-    font-size: 6.5rem;
+    font-size: clamp(2rem, 1rem + 3vw, 6.5rem);
     font-weight: 500;
     padding: 0;
     margin: 0;
@@ -152,7 +152,7 @@ const S = {
     ${TextContainer} {
       counter-increment: li;
       &::before {
-        font-size: 2rem;
+        font-size: clamp(1rem, 1rem + 0.8vw, 2rem);
         content: counter(li, decimal-leading-zero);
         margin-right: 2.4rem;
       }

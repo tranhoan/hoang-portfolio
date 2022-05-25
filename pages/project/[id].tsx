@@ -107,8 +107,12 @@ const S = {
   ProjectDetailContainer: styled(motion.div)`
     display: flex;
     flex-direction: column;
-    margin-left: 36rem;
+    margin-left: min(36rem, 20vw);
     padding-top: 19.2rem;
+
+    @media (max-width: 1400px) {
+      margin-left: 12rem;
+    }
   `,
   ProjectHeader: styled.div`
     animation: reveal 1s ease-out 700ms backwards;
@@ -119,12 +123,12 @@ const S = {
     margin-bottom: 4rem;
   `,
   ProjectYear: styled.span`
-    font-size: 2rem;
+    font-size: clamp(1rem, 1rem + 0.8vw, 2rem);
     font-weight: 400;
     margin-left: 2.4rem;
   `,
   ProjectTitle: styled.h1`
-    font-size: 5rem;
+    font-size: clamp(1.2rem, 1rem + 2.2vw, 5rem);
     font-weight: 500;
     margin: 0;
   `,
@@ -134,12 +138,19 @@ const S = {
   ProjectDescription: styled.div`
     display: grid;
     grid-template-columns: 80rem 24rem;
-    column-gap: 13.6rem;
+    column-gap: min(13.6rem, 10vw);
     margin-top: 5.6rem;
     animation: reveal 1s ease-out 1s backwards;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: unset;
+      margin-top: 3.2rem;
+      max-width: 80%;
+      gap: 3.2rem;
+    }
   `,
   Summary: styled.p`
-    font-size: 3rem;
+    font-size: clamp(1rem, 1rem + 1vw, 3rem);
     font-weight: 400;
     line-height: 60px;
     margin: 0;
@@ -148,9 +159,14 @@ const S = {
     display: flex;
     flex-direction: column;
     list-style: none;
-    font-size: 2rem;
     margin: 0;
     padding: 0;
+    font-size: clamp(1rem, 1rem + 0.8vw, 2rem);
+
+    @media (max-width: 1200px) {
+      flex-direction: row;
+      gap: 6.4rem;
+    }
   `,
   InfoItem: styled.li`
     display: flex;
