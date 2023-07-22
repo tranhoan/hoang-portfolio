@@ -1,20 +1,20 @@
-import { useAtom } from 'jotai';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { sections } from '../data/sectionData';
-import { useManageMenu } from '../hooks/menuHooks';
-import { activeSectionAtom } from '../store';
-import { HorizontalLine } from './Header';
-import OverflowContainer, { TextContainer } from './OverflowContainer';
+import { useAtom } from "jotai";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import styled, { css } from "styled-components";
+import { sections } from "../data/sectionData";
+import { useManageMenu } from "../hooks/menuHooks";
+import { activeSectionAtom } from "../store";
+import { HorizontalLine } from "./Header";
+import OverflowContainer, { TextContainer } from "./OverflowContainer";
 
 const Menu: React.FC = () => {
   const [nextActiveSection] = useAtom(activeSectionAtom);
   const [closeMenu, , isMenuOpen] = useManageMenu();
   const router = useRouter();
   const homeLink =
-    router.route === '/' ? (
+    router.route === "/" ? (
       <S.MenuLink href='#0'>home</S.MenuLink>
     ) : (
       <Link href='/#0' passHref>
@@ -22,7 +22,7 @@ const Menu: React.FC = () => {
       </Link>
     );
   const aboutLink =
-    router.route === '/' ? (
+    router.route === "/" ? (
       <S.MenuLink href='#1'>about me</S.MenuLink>
     ) : (
       <Link href='/#1' passHref>
@@ -30,7 +30,7 @@ const Menu: React.FC = () => {
       </Link>
     );
   const workLink =
-    router.route === '/' ? (
+    router.route === "/" ? (
       <S.MenuLink href='#2'>selected work</S.MenuLink>
     ) : (
       <Link href='/#2' passHref>
@@ -45,10 +45,10 @@ const Menu: React.FC = () => {
       <S.MenuContainer>
         <S.MenuList>
           <MenuItem
-            transitionDelay='1s'
+            transitionDelay='0.5s'
             className='overflow-list-item'
             forwardedAs='li'
-            key={'home-item'}
+            key={"home-item"}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle onClick={() => closeMenu()}>
@@ -56,8 +56,8 @@ const Menu: React.FC = () => {
             </S.MenuItemTitle>
           </MenuItem>
           <MenuItem
-            key={'about-item'}
-            transitionDelay='1.2s'
+            key={"about-item"}
+            transitionDelay='0.7s'
             className='overflow-list-item'
             forwardedAs='li'
           >
@@ -67,10 +67,10 @@ const Menu: React.FC = () => {
             </S.MenuItemTitle>
           </MenuItem>
           <MenuItem
-            transitionDelay='1.4s'
+            transitionDelay='0.9s'
             className='overflow-list-item'
             forwardedAs='li'
-            key={'work-item'}
+            key={"work-item"}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle onClick={() => closeMenu()}>
@@ -78,10 +78,10 @@ const Menu: React.FC = () => {
             </S.MenuItemTitle>
           </MenuItem>
           <MenuItem
-            transitionDelay='1.6s'
+            transitionDelay='1.1s'
             className='overflow-list-item'
             forwardedAs='li'
-            key={'resume-item'}
+            key={"resume-item"}
           >
             <S.MenuHorizontalLine />
             <S.MenuItemTitle>
@@ -151,11 +151,11 @@ const S = {
       props.isVisible
         ? css`
             transform: translateY(0);
-            transition: transform 0.5s cubic-bezier(0.246, 0.75, 0.187, 1);
+            transition: transform 0.3s cubic-bezier(0.246, 0.75, 0.187, 1);
           `
         : css`
             transform: translateY(100%);
-            transition: transform 0.7s cubic-bezier(0.246, 0.75, 0.187, 1) 1.8s;
+            transition: transform 0.3s cubic-bezier(0.246, 0.75, 0.187, 1) 1.4s;
           `}
     ${TextContainer} {
       counter-increment: li;
@@ -166,7 +166,7 @@ const S = {
       }
       transition: transform 0.5s var(--easing) var(--delay);
       transform: ${(props) =>
-        props.isVisible ? 'translateY(0%)' : 'translateY(110%)'};
+        props.isVisible ? "translateY(0%)" : "translateY(110%)"};
     }
   `,
   MenuLink: styled.a`

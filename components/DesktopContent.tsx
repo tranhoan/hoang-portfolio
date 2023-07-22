@@ -1,13 +1,13 @@
-import ReactFullpage, { Item } from '@fullpage/react-fullpage';
-import { motion } from 'framer-motion';
-import { useAtom } from 'jotai';
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { imageVariants } from '../animations/animations';
-import { activeSectionAtom } from '../store';
-import CustomLink from './CustomLink';
-import OverflowContainer, { TextContainer } from './OverflowContainer';
-import ScrollLine from './ScrollLine';
+import ReactFullpage, { Item } from "@fullpage/react-fullpage";
+import { motion } from "framer-motion";
+import { useAtom } from "jotai";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { imageVariants } from "../animations/animations";
+import { activeSectionAtom } from "../store";
+import CustomLink from "./CustomLink";
+import OverflowContainer, { TextContainer } from "./OverflowContainer";
+import ScrollLine from "./ScrollLine";
 
 const DesktopContainer: React.FC = () => {
   const [isFirstSectionLoaded, setIsFirstSectionLoaded] = useState(false);
@@ -39,12 +39,12 @@ const DesktopContainer: React.FC = () => {
   return (
     <ContentDesktopContainer>
       <ReactFullpage
-        anchors={['0', '1', '2']}
-        licenseKey={'YOUR_KEY_HERE'}
+        anchors={["0", "1", "2"]}
+        licenseKey={"YOUR_KEY_HERE"}
         scrollingSpeed={800}
         verticalCentered={false}
         css3={true}
-        easingcss3={'cubic-bezier(.82,.28,.34,.62)'}
+        easingcss3={"cubic-bezier(.82,.28,.34,.62)"}
         onLeave={onSectionLeave}
         afterLoad={onSectionEnter}
         animateAnchor={true}
@@ -52,37 +52,37 @@ const DesktopContainer: React.FC = () => {
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
-              <IntroSection className={'section'}>
+              <IntroSection className={"section"}>
                 <IntroductionWrapper $fadeInDone={isFirstSectionLoaded}>
                   <GreetingParagraph
                     transitionDelay='0s'
                     className='overflow-row'
                   >
-                    hi there,
+                    hey,
                   </GreetingParagraph>
                   <IntroParagraph>
                     <StyledOverflowContainer
                       transitionDelay='500ms'
                       className='overflow-row'
                     >
-                      my name is Hoang, I am an aspiring
+                      my name is Hoang, I am a frontend
                     </StyledOverflowContainer>
                     <StyledOverflowContainer
                       transitionDelay='600ms'
                       className='overflow-row'
                     >
-                      frontend developer and UX
+                      engineer currently @Mews and
                     </StyledOverflowContainer>
                     <StyledOverflowContainer
                       transitionDelay='700ms'
                       className='overflow-row'
                     >
-                      designer based in Prague.
+                      UX designer based in Prague.
                     </StyledOverflowContainer>
                   </IntroParagraph>
                 </IntroductionWrapper>
               </IntroSection>
-              <AboutSection className={'section'}>
+              <AboutSection className={"section"}>
                 <SectionMainWrapper $fadeInDone={isSecondSectionLoaded}>
                   <SecondSectionLabel
                     className='overflow-row'
@@ -128,7 +128,7 @@ const DesktopContainer: React.FC = () => {
                   </DescriptionParagraph>
                 </SectionMainWrapper>
               </AboutSection>
-              <WorkSection className={'section'}>
+              <WorkSection className={"section"}>
                 <SectionMainWrapper
                   $fadeInDone={isThirdSectionLoaded}
                   variants={imageVariants}
@@ -181,8 +181,8 @@ export const fadeInCss = css<{ $fadeInDone: boolean }>`
   transition: opacity 500ms var(--easing),
     transform 1s var(--easing) var(--delay);
   transform: ${(props) =>
-    props.$fadeInDone ? 'translateY(0px)' : 'translateY(100%)'};
-  opacity: ${(props) => (props.$fadeInDone ? '1' : '0')};
+    props.$fadeInDone ? "translateY(0px)" : "translateY(100%)"};
+  opacity: ${(props) => (props.$fadeInDone ? "1" : "0")};
 `;
 
 const GreetingParagraph = styled(OverflowContainer)`
