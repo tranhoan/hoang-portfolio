@@ -49,6 +49,7 @@ const DesktopContainer: React.FC = () => {
         afterLoad={onSectionEnter}
         animateAnchor={true}
         responsiveWidth={600}
+        credits={{ enabled: false }}
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
@@ -71,13 +72,13 @@ const DesktopContainer: React.FC = () => {
                       transitionDelay='600ms'
                       className='overflow-row'
                     >
-                      engineer currently @Mews and
+                      engineer and UX designer based
                     </StyledOverflowContainer>
                     <StyledOverflowContainer
                       transitionDelay='700ms'
                       className='overflow-row'
                     >
-                      UX designer based in Prague.
+                      in Prague. Currently @Mews.
                     </StyledOverflowContainer>
                   </IntroParagraph>
                 </IntroductionWrapper>
